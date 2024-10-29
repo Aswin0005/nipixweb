@@ -25,7 +25,7 @@ export const AboutUs = () => {
       </div>
       <div className="w-[85%] h-[70%] z-20 bg-gradient-to-r from-[#3770CD]/30 from-[10%] to-[#9DCBE8]/30 to-[40%] rounded-lg mx-auto mt-14 shadow-xl flex p-8">
         <div className="flex flex-col z-20 w-1/2  h-full justify-center">
-          <h1 className="text-center font-extrabold text-4xl text-blue-500 ">
+          <h1 className="text-center font-extrabold text-4xl text-[#3770CD] ">
             NIPIX <br></br>TECHNOLOGY
           </h1>
           <p className="text-black mt-4">
