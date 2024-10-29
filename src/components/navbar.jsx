@@ -1,0 +1,43 @@
+import Image from 'next/image';
+
+export const NavBar = () => {
+  return (
+    <nav className="w-screen fixed top-4 z-10">
+      <div className="max-w-7xl  top-4 bg-white/60 mx-auto backdrop-blur-xl rounded-2xl drop-shadow-lg px-4 sm:px-6 lg:px-8 ">
+        <div className="flex justify-between items-center h-20">
+          {/* Nipix logo and Name */}
+          <div className="flex items-center">
+            <Image
+              src="/nipixlogo.png"
+              alt="NipixLogo"
+              width={40}
+              height={40}
+            />
+            <span className="ml-2 text-xl font-semibold">NipixTechnology</span>
+          </div>
+
+          {/* Navigation */}
+          <div className="hidden md:flex grow justify-evenly lg:px-20">
+            <button className="text-black hover:text-gray-900">Home</button>
+            <button className="text-black hover:text-gray-900">
+              Courses
+            </button>
+            <button className="text-black hover:text-gray-900">
+              Products
+            </button>
+            <button className="text-black hover:text-gray-900">Blogs</button>
+            <button className="text-black hover:text-gray-900">
+              Testimonials
+            </button>
+            <button className="text-black hover:text-gray-900">
+              About Us
+            </button>
+          </div>
+          <button className="bg-[#83ABED]  hover:bg-[#3367D6] text-white p-1 px-8 rounded-md flex drop-shadow-lg">
+            Sign Up
+          </button>
+        </div>
+      </div>
+    </nav>
+  );
+};
