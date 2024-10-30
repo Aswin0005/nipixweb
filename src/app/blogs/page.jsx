@@ -1,5 +1,7 @@
+
+import BlogCategories from "@/components/BlogCategories";
 import { ChevronRight, Dot, Search } from "lucide-react";
-import Image from "next/image";
+
 
 const BlogPage = () => {
 
@@ -80,6 +82,9 @@ const BlogPage = () => {
     },
   ];
 
+
+  
+
  
   return (
     <div>
@@ -88,64 +93,13 @@ const BlogPage = () => {
           <div className="font-semibold text-[80px] w-fit -ml-1 -mt-2">BLOG</div>
           <div className="text-sm text-slate-500 -mt-3">FILTERS</div>
           
+
+           <div className="flex  justify-between">
+
           {/* Categories */}
-          <div className="flex  justify-between">
-
-            <div>
-
-              <div className="flex gap-2">
-                
-                <div className="text-[15px] font-bold">
-                  <button className="w-fit mt-3 pl-4 pr-[10px] py-[5px]  text-slate-700 border-0 rounded-2xl flex gap-2 bg-white ">All
-                    <div className="  text-slate-700   text-[10px] relative "> 3</div>
-                  </button>
-                </div>
-                <div className="text-[15px]">
-                  <button className="w-fit mt-3 pl-4 pr-[10px] py-[5px]  bg-gray-700 border-0 rounded-2xl flex gap-2 text-slate-200 ">News
-                    <div className="     text-[10px] relative "> 3</div>
-                  </button>
-                </div>
-                <div className="text-[15px]">
-                  <button className="w-fit mt-3 pl-4 pr-[10px] py-[5px]  bg-gray-700 border-0 rounded-2xl flex gap-2 text-slate-200 ">Announcements
-                    <div className="    text-[10px] relative "> 3</div>
-                  </button>
-                </div>
-                <div className="text-[15px]">
-                  <button className="w-fit mt-3 pl-4 pr-[10px] py-[5px]  bg-gray-700 border-0 rounded-2xl flex gap-2 text-slate-200 ">Events
-                    <div className="     text-[10px] relative "> 3</div>
-                  </button>
-                </div>
-                <div className="text-[15px]">
-                  <button className="w-fit mt-3 pl-4 pr-[10px] py-[5px]  bg-gray-700 border-0 rounded-2xl flex gap-2 text-slate-200 ">Operations
-                    <div className="    text-[10px] relative "> 3</div>
-                  </button>
-                </div>
-                  
-              </div>
-
-              <div className="flex gap-2">
-
-                <div className="text-[15px]">
-                  <button className="w-fit mt-3 pl-4 pr-[10px] py-[5px]  bg-gray-700 border-0 rounded-2xl flex gap-2 text-slate-200 ">Marketing
-                    <div className="     text-[10px] relative "> 3</div>
-                  </button>
-                </div>
-                <div className="text-[15px]">
-                  <button className="w-fit mt-3 pl-4 pr-[10px] py-[5px]  bg-gray-700 border-0 rounded-2xl flex gap-2 text-slate-200 ">Strategy
-                    <div className="    text-[10px] relative "> 3</div>
-                  </button>
-                </div>
-                <div className="text-[15px]">
-                  <button className="w-fit mt-3 pl-4 pr-[10px] py-[5px]  bg-gray-700 border-0 rounded-2xl flex gap-2 text-slate-200 ">Workshops
-                    <div className="     text-[10px] relative "> 3</div>
-                  </button>
-                </div>
-                
-              </div>
-
-            </div>
-
-         
+            <BlogCategories />
+          
+            {/* Search */}
             <div className="mr-8 -mt-5">
               <div className="text-[15px] text-slate-200">SEARCH BLOGS</div>
               <div className="mt-2 bg-slate-700 border-0 rounded-md  flex items-center">
