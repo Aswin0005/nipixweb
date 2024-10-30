@@ -36,3 +36,30 @@
   box-shadow: 0px 0px 100px 10px #3e8fc3;
   opacity: 0.4;
 }
+
+.vectorblurtestimony {
+  aspect-ratio: 1/1;
+  width: 25%;
+  box-shadow: 0px 0px 100px 10px #3e8fc3;
+  opacity: 0.4;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+@layer utilities {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
