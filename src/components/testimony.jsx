@@ -114,7 +114,7 @@ export const Testimony = () => {
       checkButtons();
       scrollContainerRef.current.addEventListener('scroll', checkButtons);
       return () =>
-        scrollContainerRef.current.removeEventListener('scroll', checkButtons);
+        scrollContainerRef?.current?.removeEventListener('scroll', checkButtons);
     }
   }, []);
 
