@@ -1,77 +1,116 @@
-import Image from "next/image";
+import Image from 'next/image';
 
 const RegisterPage = () => {
   return (
-    <div className="h-screen flex justify-center relative" style={{ width: '100vw', height: '100vh' }}>
+    <div className="w-screen h-screen flex justify-center items-center relative p-4 md:p-8 pt-24 md:pt-32 overflow-hidden">
       <div
         className="absolute inset-0"
         style={{
-          backgroundImage: "url('/signup_bg_1.png'), url('/signup_bg_2.png'), url('/signup_bg_3.png'), url('/signup_bg_4.png'), url('/signup_bg_5.png')",
-          backgroundPosition: 'left top, left bottom, left center, right top, 850px -20px',
+          backgroundImage:
+            "url('/signup_bg_1.png'), url('/signup_bg_2.png'), url('/signup_bg_3.png'), url('/signup_bg_4.png'), url('/signup_bg_5.png')",
+          backgroundPosition:
+            'left top, left bottom, left center, right top, 850px -20px',
           backgroundSize: '40%, auto, contain, 380px 1000px, auto',
-          backgroundRepeat: 'no-repeat, no-repeat, no-repeat, no-repeat, no-repeat',
+          backgroundRepeat:
+            'no-repeat, no-repeat, no-repeat, no-repeat, no-repeat',
           zIndex: 2,
         }}
       ></div>
 
-      <div className="absolute top-0 left-0 w-full h-full z-1 flex pt-2">
-        <div className="w-[50%] flex justify-center items-center pl-[150px]">
-          <Image src="/signup_pic.png" alt="language" width={500} height={500} />
+      <div className="w-full h-full flex justify-center items-center">
+        <div className="hidden md:flex justify-center items-center">
+          <Image
+            src="/signup_pic.png"
+            alt="language"
+            width={500}
+            height={500}
+          />
         </div>
 
-        <div className="w-[50%] flex flex-col justify-center items-center text pr-[150px] pt-[50px] z-10">
-          <h1 className="font-extrabold text-[64px] mb-[-20px]">Get Started</h1>
-          <p className="text-[16px] text-[#7B7B7B] mb-[50px]">
+        <div className="w-full md:w-[50%] flex flex-col justify-center items-center z-10">
+          <h1 className="font-extrabold text-5xl">Get Started</h1>
+          <p className="text-lg text-[#7B7B7B] text-center">
             Hey, enter your details to create your account
           </p>
 
-          <div className="w-[70%] mb-[25px] border border-gray-300 rounded-[28px] p-5 pl-10 bg-[#F6F7F8] outline outline-[#F0EFF2]">
-            <p className="text-[13px] font-semibold tracking-[5px] text-[#A0A4AE]">NAME</p>
+          <div className="w-full md:w-[65%] border border-gray-300 rounded-xl py-2 pl-5 bg-[#F6F7F8] outline outline-[#F0EFF2] mt-4">
+            <p className="font-semibold tracking-[3px] text-[#A0A4AE] text-xs">
+              NAME
+            </p>
             <input
               type="text"
-              className="w-full bg-transparent focus:outline-none text-[20px] font-bold"
+              className="w-full bg-transparent focus:outline-none font-medium"
               placeholder="Enter your name"
             />
           </div>
 
-          <div className="w-[70%] mb-[25px] border border-gray-300 rounded-[28px] p-5 pl-10 bg-[#F6F7F8] outline outline-[#F0EFF2]">
-            <p className="text-[13px] font-semibold tracking-[5px] text-[#A0A4AE]">EMAIL</p>
+          <div className="w-full md:w-[65%] border border-gray-300 rounded-xl py-2 pl-5 bg-[#F6F7F8] outline outline-[#F0EFF2] mt-4">
+            <p className="font-semibold tracking-[3px] text-[#A0A4AE] text-xs">
+              EMAIL
+            </p>
             <input
               type="email"
-              className="w-full bg-transparent focus:outline-none text-[20px] font-bold"
+              className="w-full bg-transparent focus:outline-none font-medium"
               placeholder="Enter your email"
             />
           </div>
 
-          <div className="w-[70%] mb-[25px] border border-gray-300 rounded-[28px] p-5 pl-10 bg-[#F6F7F8] outline outline-[#F0EFF2]">
-            <p className="text-[13px] font-semibold tracking-[5px] text-[#A0A4AE]">PASSWORD</p>
+          <div className="w-full md:w-[65%] border border-gray-300 rounded-xl py-2 pl-5 bg-[#F6F7F8] outline outline-[#F0EFF2] mt-4">
+            <p className="font-semibold tracking-[3px] text-[#A0A4AE] text-xs">
+              PASSWORD
+            </p>
             <input
               type="password"
-              className="w-full bg-transparent focus:outline-none text-[20px] font-bold"
+              className="w-full bg-transparent focus:outline-none font-medium"
               placeholder="Enter your password"
             />
           </div>
 
-          <button className="border w-[268px] h-[62px] bg-[#83ABED] rounded-[10px] text-[20px] font-semibold mb-[50px] text-white">
-            Sign Up
+          <div className="w-full md:w-[65%] border border-gray-300 rounded-xl py-2 pl-5 bg-[#F6F7F8] outline outline-[#F0EFF2] mt-4">
+            <p className="font-semibold tracking-[3px] text-[#A0A4AE] text-xs">
+              CONFIRM PASSWORD
+            </p>
+            <input
+              type="password"
+              className="w-full bg-transparent focus:outline-none font-medium"
+              placeholder="Re-type your password"
+            />
+          </div>
+
+          <button className="border px-8 py-3 bg-[#83ABED] rounded-xl text-lg font-semibold  text-white mt-4">
+            Sign up
           </button>
 
-          <div className="flex items-center w-[70%] mb-4">
+          <div className="flex items-center w-full md:w-[65%] my-4">
             <div className="flex-1 h-[1px] bg-[#83ABED]"></div>
-            <p className="px-4 text-gray-500 text-[20px] text-[#9C9BA5]">or signup with</p>
+            <p className="px-4 text-gray-500">or Signup with</p>
             <div className="flex-1 h-[1px] bg-[#83ABED]"></div>
           </div>
 
-          {/* Social Media Icons */}
-          <div className="flex w-[300px] justify-between p-2">
-            <button className="w-[25%] h-[60px] bg-[#3E8FC3]/10 rounded-[8px] flex justify-center items-center shadow-[0px_4px_4px_rgba(0,0,0,0.25)]">
-              <Image src="/google.png" alt="google_icon" width={30} height={30} />
+          <div className="flex justify-between p-2 gap-5">
+            <button className="w-12 h-12 bg-[#3E8FC3]/10 rounded-[8px] flex justify-center items-center shadow-[0px_4px_4px_rgba(0,0,0,0.25)]">
+              <Image
+                src="/google.png"
+                alt="google_icon"
+                width={20}
+                height={20}
+              />
             </button>
-            <button className="w-[25%] h-[60px] bg-[#3E8FC3]/10 rounded-[8px] flex justify-center items-center shadow-[0px_4px_4px_rgba(0,0,0,0.25)]">
-              <Image src="/facebook.png" alt="facebook_icon" width={30} height={30} />
+            <button className="w-12 h-12 bg-[#3E8FC3]/10 rounded-[8px] flex justify-center items-center shadow-[0px_4px_4px_rgba(0,0,0,0.25)]">
+              <Image
+                src="/facebook.png"
+                alt="facebook_icon"
+                width={20}
+                height={20}
+              />
             </button>
-            <button className="w-[25%] h-[60px] bg-[#3E8FC3]/10 rounded-[8px] flex justify-center items-center shadow-[0px_4px_4px_rgba(0,0,0,0.25)]">
-              <Image src="/twitter.png" alt="twitter_icon" width={30} height={30} />
+            <button className="w-12 h-12 bg-[#3E8FC3]/10 rounded-[8px] flex justify-center items-center shadow-[0px_4px_4px_rgba(0,0,0,0.25)]">
+              <Image
+                src="/twitter.png"
+                alt="twitter_icon"
+                width={20}
+                height={20}
+              />
             </button>
           </div>
         </div>

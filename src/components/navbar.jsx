@@ -16,7 +16,7 @@ export const NavBar = () => {
   return (
     <nav className="w-screen fixed md:top-4 z-40">
       <div className="max-w-7xl top-4 bg-white/60 md:mx-auto backdrop-blur-xl md:rounded-2xl drop-shadow-lg px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+        <div className="flex justify-between items-center  h-16 md:h-20">
           {/* Nipix logo and Name */}
           <div className="flex items-center">
             <Image
@@ -46,12 +46,12 @@ export const NavBar = () => {
               { label: 'Courses', path: '/courses' },
               { label: 'Products', path: '/product' },
               { label: 'Blogs', path: '/blogs' },
-              { label: 'Testimonials', path: '/testimonials' },
+              { label: 'Testimonials', path: '' },
               { label: 'About Us', path: '/about' },
             ].map((item) => (
               <button
                 key={item.path}
-                className={`text-black hover:text-gray-900 px-2 ${
+                className={`text-black hover:text-gray-900 px-2  ${
                   pathname === item.path
                     ? 'border-2 border-blue-500 rounded-lg'
                     : ''
