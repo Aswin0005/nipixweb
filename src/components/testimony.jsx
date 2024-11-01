@@ -122,15 +122,15 @@ export const Testimony = () => {
   }, []);
 
   return (
-    <div className="px-14 relative w-screen min-h-screen  overflow-x-hidden">
+    <div className="px-4 pt-4 md:px-8 md:pt-8 relative w-screen min-h-screen  overflow-x-hidden">
       <div className="my-8 z-20">
-        <h2 className="text-5xl font-extrabold text-[#3770CD]">
+        <h2 className="text-5xl font-extrabold text-[#3770CD] leading-[65px]">
           Our Positive{' '}
           <span className="bg-gradient-to-r from-[#3770CD] to-[#3E8FC3]  text-white px-2 py-1 rounded-lg italic">
             Social Impact
           </span>
         </h2>
-        <p className="text-black/70 text-lg mt-4">
+        <p className="text-black/70 text-lg mt-4 max-md:text-center">
           Hear from our students about their experiences with our one-on-one
           courses and project-based learning.
         </p>
@@ -143,7 +143,7 @@ export const Testimony = () => {
         {testimonials.map((testimonial, index) => (
           <div
             key={index}
-            className="relative min-w-96 min-h-60 bg-white/80 rounded-3xl shadow-lg p-6 text-left drop-shadow-lg flex items-center"
+            className="relative min-w-[300px] md:min-w-96 min-h-60 bg-white/80 rounded-3xl shadow-lg p-6 text-left drop-shadow-lg flex items-center"
           >
             <Image
               src="/quote.png"
@@ -207,7 +207,7 @@ export const Testimony = () => {
         </button>
       </div>
 
-      <div className="relative mt-10 h-56 z-20 bg-[#3E8FC3] text-white rounded-lg p-6 flex flex-col items-start">
+      <div className="relative mt-10 min-h-56 z-20 bg-[#3E8FC3] text-white rounded-lg p-6 flex flex-col items-start">
         <h3 className="text-2xl font-semibold mb-2 text-left">
           Subscribe Our Newsletters
         </h3>
@@ -231,7 +231,7 @@ export const Testimony = () => {
           width={300}
           height={300}
           alt="Newsletter"
-          className="absolute right-16 bottom-0"
+          className="absolute right-16 bottom-0 max-md:hidden"
         />
       </div>
 

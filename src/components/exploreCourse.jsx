@@ -174,8 +174,8 @@ export const ExploreCourses = () => {
       </p>
 
       <div className="flex flex-col items-center w-full">
-        <div className="w-full flex items-center mb-4">
-          <div className="relative w-full inline-block  bg-[#3770CD] rounded-full z-20 whitespace-nowrap overflow-x-scroll overflow-y-hidden no-scrollbar">
+        <div className="w-full flex justify-center items-center mb-4">
+          <div className="relative w-full max-w-3xl inline-block  bg-[#3770CD] rounded-full z-20 whitespace-nowrap overflow-x-scroll overflow-y-hidden no-scrollbar">
             {categories.map((category) => (
               <button
                 key={category}

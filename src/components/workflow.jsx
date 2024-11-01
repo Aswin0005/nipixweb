@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export const WorkFlow = () => {
   return (
-    <div className="relative w-screen min-h-screen">
+    <div className="relative w-screen min-h-screen  p-2 md:p-8">
       <div className="relative">
         <h1 className="text-5xl font-extrabold text-[#3770CD] text-center">
           Working Process for <br></br>Join & Benefits
@@ -27,8 +27,8 @@ export const WorkFlow = () => {
         </svg>
       </div>
 
-      <div className="relative z-20 max-w-6xl min-h-64 rounded-lg mx-auto bg-gradient-to-r from-[#3770CD]/20 from-[10%] to-[#9DCBE8]/20 to-[40%] flex mt-10 justify-around items-center gap-8">
-        <div className="absolute -top-5 -left-6 w-14 h-14 text-white bg-[#3770CD] rounded-full font-bold flex justify-center items-center">
+      <div className="relative z-20 max-w-6xl min-h-64 rounded-lg mx-auto bg-gradient-to-r from-[#3770CD]/20 from-[10%] to-[#9DCBE8]/20 to-[40%]  flex flex-col md:flex-row mt-10 justify-around items-center gap-8 p-4">
+        <div className="absolute -top-5 -left-1 md:-left-6 w-14 h-14 text-white bg-[#3770CD] rounded-full font-bold flex justify-center items-center">
           1
         </div>
         <span className="max-w-96 z-20">
@@ -50,11 +50,11 @@ export const WorkFlow = () => {
         </span>
       </div>
 
-      <div className="relative z-20 max-w-6xl min-h-64 rounded-lg mx-auto bg-gradient-to-r from-[#3770CD]/20 from-[10%] to-[#9DCBE8]/20 to-[40%] flex flex-row-reverse mt-10 justify-around items-center gap-8">
-        <div className="absolute -top-5 -right-6 w-14 h-14 text-white bg-[#3770CD] rounded-full font-bold flex justify-center items-center">
+      <div className="relative z-20 max-w-6xl min-h-64 rounded-lg mx-auto bg-gradient-to-r from-[#3770CD]/20 from-[10%] to-[#9DCBE8]/20 to-[40%] flex flex-col md:flex-row-reverse mt-10 justify-around items-center gap-8 p-4">
+        <div className="absolute -top-5 -right-1 md:-right-6 w-14 h-14 text-white bg-[#3770CD] rounded-full font-bold flex justify-center items-center">
           2
         </div>
-        <span className="max-w-96">
+        <span className="max-w-72">
           <h1 className="text-[#3E8FC3] font-bold text-3xl">
             Enroll the Course
           </h1>
@@ -69,8 +69,8 @@ export const WorkFlow = () => {
         </span>
       </div>
 
-      <div className="relative z-20 max-w-6xl min-h-64 rounded-lg mx-auto bg-gradient-to-r from-[#3770CD]/20 from-[10%] to-[#9DCBE8]/20 to-[40%] flex mt-10 justify-around items-center gap-8">
-        <div className="absolute -top-5 -left-6 w-14 h-14 text-white bg-[#3770CD] rounded-full font-bold flex justify-center items-center">
+      <div className="relative z-20 max-w-6xl min-h-64 rounded-lg mx-auto bg-gradient-to-r from-[#3770CD]/20 from-[10%] to-[#9DCBE8]/20 to-[40%] flex flex-col md:flex-row mt-10 justify-around items-center gap-8 p-4">
+        <div className="absolute -top-5 -left-1 md:-left-6 w-14 h-14 text-white bg-[#3770CD] rounded-full font-bold flex justify-center items-center">
           3
         </div>
         <span className="max-w-96">
@@ -93,8 +93,8 @@ export const WorkFlow = () => {
         </span>
       </div>
 
-      <div className="relative z-20 max-w-6xl min-h-64 rounded-lg mx-auto bg-gradient-to-r from-[#3770CD]/20 from-[10%] to-[#9DCBE8]/20 to-[40%] flex flex-row-reverse mt-10 justify-around items-center gap-8">
-        <div className="absolute -top-5 -right-6 w-14 h-14 text-white bg-[#3770CD] rounded-full font-bold flex justify-center items-center">
+      <div className="relative z-20 max-w-6xl min-h-64 rounded-lg mx-auto bg-gradient-to-r from-[#3770CD]/20 from-[10%] to-[#9DCBE8]/20 to-[40%] flex flex-col md:flex-row-reverse mt-10 justify-around items-center gap-8 p-4">
+        <div className="absolute -top-5 -right-1 md:-right-6 w-14 h-14 text-white bg-[#3770CD] rounded-full font-bold flex justify-center items-center">
           4
         </div>
         <span className="max-w-96">

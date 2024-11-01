@@ -7,8 +7,8 @@ export const NavBar = () => {
   const pathname = usePathname();
 
   return (
-    <nav className="w-screen fixed top-4 z-40">
-      <div className="max-w-7xl top-4 bg-white/60 mx-auto backdrop-blur-xl rounded-2xl drop-shadow-lg px-4 sm:px-6 lg:px-8">
+    <nav className="w-screen fixed md:top-4 z-40">
+      <div className="max-w-7xl top-4 bg-white/60 md:mx-auto backdrop-blur-xl md:rounded-2xl drop-shadow-lg px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Nipix logo and Name */}
           <div className="flex items-center">
@@ -18,7 +18,7 @@ export const NavBar = () => {
               width={40}
               height={40}
             />
-            <span className="ml-2 text-xl font-semibold">NipixTechnology</span>
+            <span className="text-xl font-semibold">NipixTechnology</span>
           </div>
 
           {/* Navigation */}
@@ -56,7 +56,7 @@ export const NavBar = () => {
               Blogs
             </button>
             <button
-              className={`text-black hover:text-gray-900 px-2 ${
+              className={`text-black hover:text-gray-900 px-2 hidden md:visible ${
                 pathname === '/testimonials' ? 'border-2 border-blue-500 rounded-lg' : ''
               }`}
               onClick={() => router.push('/testimonials')}

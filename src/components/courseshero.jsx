@@ -4,7 +4,7 @@ export const CoursesHero = () => {
   return (
     <div className="w-screen min-h-screen flex">
       <div className="grow bg-[image:linear-gradient(to_right,#3770CD_0%,#3770CD_50%,#f7f7f7_50%,#f7f7f7_100%)]  flex flex-col justify-center items-center p-8">
-        <h1 className="color-inverse-head text-5xl font-extrabold mt-20">
+        <h1 className="color-inverse-head text-5xl font-extrabold">
           All Skills you need in One Place
         </h1>
         <p className="text-black/70 color-inverse-subhead">

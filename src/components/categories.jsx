@@ -1,12 +1,12 @@
 import Image from 'next/image';
 export const Categories = () => {
   return (
-    <div className="relative w-screen h-screen flex justify-center items-center gap-20 ">
-      <div className="relative max-w-96 z-20">
-        <h1 className="text-5xl text-[#3770CD] font-extrabold z-30">
+    <div className="relative w-screen min-h-screen flex flex-col md:flex-row  justify-center items-center gap-20 p-8">
+      <div className="relative max-w-96 z-20 flex flex-col max-md:items-center max-md:justify-center">
+        <h1 className="text-5xl text-[#3770CD] font-extrabold z-30 max-sm:text-center">
           Explore <br></br>Our Categories
         </h1>
-        <p>
+        <p className="max-sm:text-center">
           Explore a diverse range of courses tailored to help you excel in your
           field, with options for every passion.
         </p>
@@ -34,9 +34,9 @@ export const Categories = () => {
         </svg>
       </div>
 
-      <div className="grid grid-cols-4 grid-rows-2 gap-10 max-w-1/2 h-1/2 z-20">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-10 max-w-1/2 h-1/2 z-20">
         <div className="flex flex-col justify-center items-center gap-2">
-          <span className="bg-[#83ABED] aspect-square w-28 rounded-lg flex justify-center items-center">
+          <span className="bg-[#83ABED] aspect-square w-full rounded-lg flex justify-center items-center">
             <Image
               src="/programming-language.png"
               alt="language"
@@ -45,10 +45,12 @@ export const Categories = () => {
               className=""
             />
           </span>
-          <p className="text-black/70  font-medium">Language</p>
+          <p className="text-black/70  font-medium whitespace-nowrap">
+            Language
+          </p>
         </div>
         <div className="flex flex-col justify-center items-center gap-2">
-          <span className="bg-[#83ABED]/50 aspect-square w-28 rounded-lg flex justify-center items-center">
+          <span className="bg-[#83ABED]/50 aspect-square w-full rounded-lg flex justify-center items-center">
             <Image
               src="/design.png"
               alt="graphic-design"
@@ -57,10 +59,10 @@ export const Categories = () => {
               className=""
             />
           </span>
-          <p className="text-black/70  font-medium">Design</p>
+          <p className="text-black/70  font-medium whitespace-nowrap">Design</p>
         </div>
         <div className="flex flex-col justify-center items-center gap-2">
-          <span className="bg-[#83ABED] aspect-square w-28 rounded-lg flex justify-center items-center">
+          <span className="bg-[#83ABED] aspect-square w-full rounded-lg flex justify-center items-center">
             <Image
               src="/bars.png"
               alt="finance"
@@ -69,10 +71,12 @@ export const Categories = () => {
               className=""
             />
           </span>
-          <p className="text-black/70  font-medium">Finance</p>
+          <p className="text-black/70  font-medium whitespace-nowrap">
+            Finance
+          </p>
         </div>
         <div className="flex flex-col justify-center items-center gap-2">
-          <span className="bg-[#83ABED]/50 aspect-square w-28 rounded-lg flex justify-center items-center">
+          <span className="bg-[#83ABED]/50 aspect-square w-full rounded-lg flex justify-center items-center">
             <Image
               src="/healthcare.png"
               alt="health care"
@@ -81,10 +85,12 @@ export const Categories = () => {
               className=""
             />
           </span>
-          <p className="text-black/70  font-medium">Health Care</p>
+          <p className="text-black/70  font-medium whitespace-nowrap">
+            Health Care
+          </p>
         </div>
         <div className="flex flex-col justify-center items-center gap-2">
-          <span className="bg-[#83ABED]/50 aspect-square w-28 rounded-lg flex justify-center items-center">
+          <span className="bg-[#83ABED]/50 aspect-square w-full rounded-lg flex justify-center items-center">
             <Image
               src="/robotic-arm.png"
               alt="Robotics"
@@ -93,10 +99,12 @@ export const Categories = () => {
               className=""
             />
           </span>
-          <p className="text-black/70  font-medium">Robotics</p>
+          <p className="text-black/70  font-medium whitespace-nowrap">
+            Robotics
+          </p>
         </div>
         <div className="flex flex-col justify-center items-center gap-2">
-          <span className="bg-[#83ABED] aspect-square w-28 rounded-lg flex justify-center items-center">
+          <span className="bg-[#83ABED] aspect-square w-full rounded-lg flex justify-center items-center">
             <Image
               src="/software-developer.png"
               alt="software-development"
@@ -105,10 +113,12 @@ export const Categories = () => {
               className=""
             />
           </span>
-          <p className="text-black/70  font-medium">Development</p>
+          <p className="text-black/70  font-medium whitespace-nowrap">
+            Development
+          </p>
         </div>
         <div className="flex flex-col justify-center items-center gap-2">
-          <span className="bg-[#83ABED]/50 aspect-square w-28 rounded-lg flex justify-center items-center">
+          <span className="bg-[#83ABED]/50 aspect-square w-full rounded-lg flex justify-center items-center">
             <Image
               src="/edit-tool.png"
               alt="Arts"
@@ -117,10 +127,12 @@ export const Categories = () => {
               className=""
             />
           </span>
-          <p className="text-black/70  font-medium">Arts & Design</p>
+          <p className="text-black/70  font-medium whitespace-nowrap">
+            Arts & Design
+          </p>
         </div>
         <div className="flex flex-col justify-center items-center gap-2">
-          <span className="bg-[#83ABED] aspect-square w-28 rounded-lg flex justify-center items-center">
+          <span className="bg-[#83ABED] aspect-square w-full rounded-lg flex justify-center items-center">
             <Image
               src="/management.png"
               alt="Management"
@@ -129,7 +141,9 @@ export const Categories = () => {
               className=""
             />
           </span>
-          <p className="text-black/70  font-medium">Management</p>
+          <p className="text-black/70  font-medium whitespace-nowrap">
+            Management
+          </p>
         </div>
       </div>
 
