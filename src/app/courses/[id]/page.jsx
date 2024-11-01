@@ -1,5 +1,9 @@
+'use client'
+
+import { useState } from 'react';
 import Image from 'next/image';
 import { CirclePlay, CircleCheckBig, TrendingUp, Calendar } from 'lucide-react';
+
 
 const CoursesPage = () => {
   const keytopics = [
@@ -21,7 +25,20 @@ const CoursesPage = () => {
     { sno: '3', title: 'What is JavaScript?', duration: '2:30 mins' },
     { sno: '4', title: 'Web browsers and web servers', duration: '2:30 mins' },
     { sno: '5', title: 'URLs and Protocols', duration: '2:30 mins' },
+    {
+      sno: '1',
+      title: 'Introduction to web development',
+      duration: '3:30 mins',
+    },
+    { sno: '2', title: 'What is HTML and CSS?', duration: '2:30 mins' },
+    { sno: '3', title: 'What is JavaScript?', duration: '2:30 mins' },
+    { sno: '4', title: 'Web browsers and web servers', duration: '2:30 mins' },
+    { sno: '5', title: 'URLs and Protocols', duration: '2:30 mins' },
+    
   ];
+
+  const [showAll, setShowAll] = useState(false);
+  const toggleShowAll = () => setShowAll(!showAll);
 
   return (
     <>
@@ -161,8 +178,8 @@ const CoursesPage = () => {
                   Course content
                 </h2>
               </div>
-              <div className="drop-shadow-md bg-white px-6 py-6">
-                {content.map((item, index) => (
+              <div className=" bg-white px-6 py-6">
+                {(showAll ? content : content.slice(0, 5)).map((item, index) => (
                   <div
                     key={index}
                     className="flex items-center text-gray-500 rounded-lg shadow-md justify-between py-2 border-b last:border-b-0 hover:bg-black hover:rounded-lg px-3 hover:text-white  "
@@ -181,7 +198,18 @@ const CoursesPage = () => {
                     </span>
                   </div>
                 ))}
+                {content.length > 5 && (
+                <div className="flex justify-center mt-4">
+                  <button
+                    onClick={toggleShowAll}
+                    className="text-gray-700 font-semibold hover:underline"
+                  >
+                    {showAll ? "Show Less" : "Show More"}
+                  </button>
+                </div>
+              )}
               </div>
+              
             </div>
 
             <div className="mt-8 flex flex-col justify-center items-center">
