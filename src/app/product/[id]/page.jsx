@@ -97,10 +97,10 @@ const ProductItem = () => {
 
     return (
         <div className="mt-48 mx-16">
-            <div className="grid grid-cols-2">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 {/* Left Grid - Product Images */}
                 <div className="flex flex-wrap flex-col justify-between">
-                    <div className="relative h-72 w-[32rem] mx-auto bg-slate-200 rounded-xl border">
+                    <div className="relative h-72 w-[32rem] lg:w-[24rem] xl:w-[32rem] mx-auto bg-slate-200 rounded-xl border">
                         <Image src={images[currentIndex]} alt="Product Image" layout="fill" className="rounded-xl object-cover" />
 
                         <button onClick={handlePrev} className="absolute top-1/2 left-0 transform -translate-y-1/2 p-2 bg-white border rounded-full shadow-lg">
@@ -116,13 +116,13 @@ const ProductItem = () => {
                         {images.map((image, index) => (
                             <div
                                 key={index}
-                                className={`h-24 w-24 rounded-xl cursor-pointer ${currentIndex === index ? "border-2 border-slate-700" : "border border-slate-300"
-                                    }`}
+                                className={`h-20 w-20 lg:h-[75px] lg:w-[75px] xl:h-[96px] xl:w-[96px] rounded-xl cursor-pointer ${currentIndex === index ? "border-2 border-slate-700" : "border border-slate-300"}`}
                                 onClick={() => handleThumbnailClick(index)}
                             >
                                 <Image
                                     src={image}
                                     alt={`Thumbnail ${index + 1}`}
+                                    layout="responsive"
                                     width={96}
                                     height={96}
                                     className="rounded-xl object-cover"
@@ -133,7 +133,7 @@ const ProductItem = () => {
                 </div>
 
                 {/* Right Grid - Description */}
-                <div className="">
+                <div className="mt-8 lg:mt-0">
                     <h1 className="text-3xl">Uno R3 CH340G ATmega328p Development Board Compatible</h1>
                     <div className="flex my-5">
                         <h1 className="text-xl mb-0 pb-0">{averageRating}</h1>
@@ -164,6 +164,7 @@ const ProductItem = () => {
                     <button className="mt-8 bg-[#3897D1] rounded-lg text-md py-3 w-full text-white px-4">Buy Now</button>
                 </div>
             </div>
+
 
 
             {/* Product Info */}
