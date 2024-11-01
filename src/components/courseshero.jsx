@@ -3,11 +3,11 @@ import Image from 'next/image';
 export const CoursesHero = () => {
   return (
     <div className="w-screen min-h-screen flex">
-      <div className="grow bg-[image:linear-gradient(to_right,#3770CD_0%,#3770CD_50%,#f7f7f7_50%,#f7f7f7_100%)]  flex flex-col justify-center items-center p-8">
-        <h1 className="color-inverse-head text-5xl font-extrabold mt-20">
+      <div className="grow bg-[image:linear-gradient(to_right,#3770CD_0%,#3770CD_50%,#f7f7f7_50%,#f7f7f7_100%)]  flex flex-col justify-center items-center  p-4 md:p-8">
+        <h1 className="color-inverse-head text-5xl font-extrabold mt-20 max-md:text-center">
           All Skills you need in One Place
         </h1>
-        <p className="text-black/70 color-inverse-subhead">
+        <p className="text-black/70 color-inverse-subhead font-medium max-md:text-center">
           From key competencies to advanced technical knowledge, Nipix
           Technology empowers your professional growth.
         </p>
@@ -22,7 +22,7 @@ export const CoursesHero = () => {
           </button>
         </div>
 
-        <div className="grid grid-cols-4 grid-rows-2 gap-10 max-w-sm min-h-1/2 z-20 mt-4">
+        <div className="grid grid-cols-3 md:grid-cols-4 md:grid-rows-2 gap-5 md:gap-10 max-w-sm min-h-1/2 z-20 mt-4">
           <div className="flex flex-col justify-center items-center gap-2">
             <span className="bg-[#83ABED] aspect-square w-20 rounded-lg flex justify-center items-center">
               <Image
@@ -38,7 +38,7 @@ export const CoursesHero = () => {
             </p>
           </div>
           <div className="flex flex-col justify-center items-center gap-2">
-            <span className="bg-[#83ABED]/50 aspect-square w-20 rounded-lg flex justify-center items-center">
+            <span className="bg-[#83ABED] aspect-square w-20 rounded-lg flex justify-center items-center">
               <Image
                 src="/design.png"
                 alt="graphic-design"
@@ -66,7 +66,7 @@ export const CoursesHero = () => {
             </p>
           </div>
           <div className="flex flex-col justify-center items-center gap-2">
-            <span className="bg-[#83ABED]/50 aspect-square w-20 rounded-lg flex justify-center items-center">
+            <span className="bg-[#83ABED] aspect-square w-20 rounded-lg flex justify-center items-center">
               <Image
                 src="/healthcare.png"
                 alt="health care"
@@ -80,7 +80,7 @@ export const CoursesHero = () => {
             </p>
           </div>
           <div className="flex flex-col justify-center items-center gap-2">
-            <span className="bg-[#83ABED]/50 aspect-square w-20 rounded-lg flex justify-center items-center">
+            <span className="bg-[#83ABED] aspect-square w-20 rounded-lg flex justify-center items-center">
               <Image
                 src="/robotic-arm.png"
                 alt="Robotics"
@@ -108,7 +108,7 @@ export const CoursesHero = () => {
             </p>
           </div>
           <div className="flex flex-col justify-center items-center gap-2">
-            <span className="bg-[#83ABED]/50 aspect-square w-20 rounded-lg flex justify-center items-center">
+            <span className="bg-[#83ABED] aspect-square w-20 rounded-lg flex justify-center items-center">
               <Image
                 src="/edit-tool.png"
                 alt="Arts"

@@ -7,18 +7,20 @@ import electronicKit from "../../../public/electronicKit.jpg";
 import otherKit from "../../../public/otherKit.jpg";
 import Image from 'next/image';
 
-
 function ProductPage() {
-
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState('Arduino Kits');
+  const [selectedCategory, setSelectedCategory] = useState('All Products');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [sortOrder, setSortOrder] = useState(null); // New state for sort order
 
   const categories = [
+    { id: 'all', name: 'All Products' },
     { id: 'arduino', name: 'Arduino Kits' },
     { id: 'robotic', name: 'Robotic Kits' },
     { id: 'electronic', name: 'Electronic Kits' },
     { id: 'other', name: 'Other Kits' },
   ];
+
 
   const products = [
     // Arduino Kits
@@ -190,33 +192,37 @@ function ProductPage() {
     },
   ];
 
+  const handleSort = (order) => {
+    setSortOrder(order);
+    setIsDropdownOpen(false);
+  };
 
-  // Filter products based on selected category
-  const filteredProducts = products.filter(
-    (product) => product.category === selectedCategory
-  );
+  const filteredProducts = products
+    .filter(product =>
+      product.name.toLowerCase().includes(searchQuery.toLowerCase()) // Search across all products
+    )
+    .filter(product =>
+      selectedCategory === 'All Products' || product.category === selectedCategory // Filter by selected category
+    )
+    .sort((a, b) => {
+      if (!sortOrder) return 0;
+      return sortOrder === 'lowToHigh' ? a.price - b.price : b.price - a.price;
+    });
 
   return (
     <div className="mt-32">
       <div className="flex h-screen">
         {/* Left Sidebar */}
         <div className="w-64 border-r border-gray-300 p-5 bg-white fixed h-full">
-          <h1 className="text-xl text-center font-bold mb-5">All Products</h1>
-          {categories.map((category) => (
+          <h1 className="text-xl text-center font-bold mb-5">Our Products</h1>
+          {categories.map(category => (
             <button
               key={category.id}
               onClick={() => setSelectedCategory(category.name)}
-              className={`w-full text-center p-2 rounded-r-full mb-2 relative ${selectedCategory === category.name
-                ? 'bg-blue-500 text-white'
-                : 'bg-transparent text-black'
-                }`}
+              className={`w-full text-center p-2 rounded-r-full mb-2 relative ${selectedCategory === category.name ? 'bg-blue-500 text-white' : 'bg-transparent text-black'}`}
             >
               {category.name}
-              {selectedCategory === category.name && (
-                <span className="absolute right-8 top-[21px] transform -translate-y-1/2 text-white">
-                  ➔
-                </span>
-              )}
+              {selectedCategory === category.name && <span className="absolute right-8 top-[21px] transform -translate-y-1/2 text-white">➔</span>}
             </button>
           ))}
         </div>
@@ -229,6 +235,8 @@ function ProductPage() {
               <input
                 type="text"
                 placeholder="Search for kits..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
                 className="p-2 pl-3 border border-gray-300 rounded-md w-full mr-2"
               />
               <button className="py-2 px-4 bg-blue-500 text-white rounded-lg">Search</button>
@@ -245,7 +253,7 @@ function ProductPage() {
                 <div className="absolute top-full left-0 mt-2 w-48 border border-gray-200 rounded-lg bg-white shadow-lg">
                   <button
                     onClick={() => {
-                      // Add sorting logic here
+                      setSortOrder('lowToHigh');
                       setIsDropdownOpen(false);
                     }}
                     className="w-full text-left px-4 py-2 hover:bg-gray-100"
@@ -254,7 +262,7 @@ function ProductPage() {
                   </button>
                   <button
                     onClick={() => {
-                      // Add sorting logic here
+                      setSortOrder('highToLow');
                       setIsDropdownOpen(false);
                     }}
                     className="w-full text-left px-4 py-2 hover:bg-gray-100"
@@ -275,15 +283,8 @@ function ProductPage() {
           {/* Product Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 px-6 pb-32">
             {filteredProducts.map((product) => (
-              <div
-                key={product.id}
-                className="border border-gray-300 rounded-lg p-4 bg-white"
-              >
-                <Image
-                  src={product.image}
-                  alt={product.name}
-                  className="w-full h-40 object-contain rounded mb-3"
-                />
+              <div key={product.id} className="border border-gray-300 rounded-lg p-4 bg-white">
+                <Image src={product.image} alt={product.name} className="w-full h-40 object-contain rounded mb-3" />
                 <h3 className="text-xl font-bold mb-1">{product.name}</h3>
                 <p className="text-sm text-gray-600 mb-1 line-clamp-2">{product.description}</p>
                 <div className="flex justify-between items-center">

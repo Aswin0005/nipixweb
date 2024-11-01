@@ -38,7 +38,7 @@ export const CourseWebinars = () => {
   ];
 
   return (
-    <div className="relative w-screen min-h-screen flex gap-10 lg:justify-between p-10 lg:p-20  items-center overflow-hidden">
+    <div className="relative w-screen min-h-screen flex flex-col-reverse md:flex-row  gap-4 md:gap-10 lg:justify-between p-4 lg:p-20  items-center overflow-hidden">
       <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-6 mt-6 max-w-3xl z-20 max-h-[450px] overflow-scroll no-scrollbar">
         {webinars.map((webinar, index) => (
           <div
@@ -79,10 +79,10 @@ export const CourseWebinars = () => {
       </div>
 
       <div>
-        <h2 className="text-5xl font-extrabold text-[#3770CD] z-20">
+        <h2 className="text-5xl font-extrabold text-[#3770CD] relative z-20">
           Join Webinar
         </h2>
-        <p className="text-black/70 mt-2 mb-6 text-md max-w-lg z-20">
+        <p className="text-black/70 mt-2 mb-6 text-md max-w-lg relative z-20">
           Discover our comprehensive courses and elevate your expertise with
           cutting-edge knowledge designed to advance your career in the tech
           industry.
@@ -135,7 +135,7 @@ export const CourseWebinars = () => {
         <ShadowGlassBox />
       </div>
 
-      <div className="absolute h-[20%] w-3/4 bg-[#3770CD] left-0 top-[10%] rounded-r-md"></div>
+      <div className="absolute max-md:hidden h-[20%] w-3/4 bg-[#3770CD] left-0 top-[10%] rounded-r-md"></div>
       <div className="absolute h-[20%] w-3/4 bg-[#3770CD] right-0 bottom-[10%] rounded-l-md"></div>
       <div className="vectorblurtestimony z-10 absolute bottom-10 bg-[#3e8fc3]/55 rounded-full"></div>
       <div className="vectorblurtestimony z-10 absolute top-0 right-10  bg-[#3e8fc3]/55 rounded-full"></div>

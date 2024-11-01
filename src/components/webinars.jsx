@@ -2,13 +2,13 @@ import Image from "next/image";
 
 export const Webinars = () => {
   return (
-    <div className="relative w-screen h-screen flex justify-center items-center gap-20 ">
-      <div className="max-w-xl flex flex-col justify-center items-start gap-2 z-20">
+    <div className="relative w-screen min-h-screen flex flex-col md:flex-row justify-center items-center gap-20  p-4 md:p-8">
+      <div className="max-w-xl flex flex-col justify-center items-center md:items-start  gap-2 z-20">
         <p className="text-[#3770CD]">100% SATISFACTION GUARANTEE</p>
-        <h1 className="text-5xl font-extrabold text-[#3770CD]">
+        <h1 className="text-5xl font-extrabold text-[#3770CD] max-md:text-center">
           Highly Interactive <br></br>Webinars
         </h1>
-        <p className="text-black/70 font-medium">
+        <p className="text-black/70 font-medium max-md:text-center">
           Join our interactive webinars to enhance your skills and knowledge.
           These sessions provide practical insights and hands-on learning to
           help you excel in your field.

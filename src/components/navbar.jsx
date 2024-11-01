@@ -1,14 +1,21 @@
 'use client';
 import Image from 'next/image';
 import { useRouter, usePathname } from 'next/navigation';
+import { useState } from 'react';
+import { Menu , X} from 'lucide-react';
 
 export const NavBar = () => {
   const router = useRouter();
   const pathname = usePathname();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
 
   return (
-    <nav className="w-screen fixed top-4 z-40">
-      <div className="max-w-7xl top-4 bg-white/60 mx-auto backdrop-blur-xl rounded-2xl drop-shadow-lg px-4 sm:px-6 lg:px-8">
+    <nav className="w-screen fixed md:top-4 z-40">
+      <div className="max-w-7xl top-4 bg-white/60 md:mx-auto backdrop-blur-xl md:rounded-2xl drop-shadow-lg px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Nipix logo and Name */}
           <div className="flex items-center">
@@ -18,67 +25,88 @@ export const NavBar = () => {
               width={40}
               height={40}
             />
-            <span className="ml-2 text-xl font-semibold">NipixTechnology</span>
+            <span className="text-xl font-semibold">NipixTechnology</span>
           </div>
 
-          {/* Navigation */}
-          <div className="hidden md:flex grow justify-evenly lg:px-20">
-            <button
-              className={`text-black hover:text-gray-900 px-2 ${
-                pathname === '/' ? 'border-2 border-blue-500 rounded-lg' : ''
-              }`}
-              onClick={() => router.push('/')}
-            >
-              Home
-            </button>
-            <button
-              className={`text-black hover:text-gray-900 px-2 ${
-                pathname === '/courses' ? 'border-2 border-blue-500 rounded-lg' : ''
-              }`}
-              onClick={() => router.push('/courses')}
-            >
-              Courses
-            </button>
-            <button
-              className={`text-black hover:text-gray-900 px-2 ${
-                pathname === '/product' ? 'border-2 border-blue-500 rounded-lg' : ''
-              }`}
-              onClick={() => router.push('/product')}
-            >
-              Products
-            </button>
-            <button
-              className={`text-black hover:text-gray-900 px-2 ${
-                pathname === '/blogs' ? 'border-2 border-blue-500 rounded-lg' : ''
-              }`}
-              onClick={() => router.push('/blogs')}
-            >
-              Blogs
-            </button>
-            <button
-              className={`text-black hover:text-gray-900 px-2 ${
-                pathname === '/testimonials' ? 'border-2 border-blue-500 rounded-lg' : ''
-              }`}
-              onClick={() => router.push('/testimonials')}
-            >
-              Testimonials
-            </button>
-            <button
-              className={`text-black hover:text-gray-900 px-2 ${
-                pathname === '/about' ? 'border-2 border-blue-500 rounded-lg' : ''
-              }`}
-              onClick={() => router.push('/about')}
-            >
-              About Us
+          {/* Hamburger Icon for Mobile */}
+          <div className="md:hidden">
+            <button onClick={toggleMobileMenu} className="focus:outline-none">
+              {isMobileMenuOpen ? (
+                <X className="w-6 h-6 text-black" />
+              ) : (
+                <Menu className="w-6 h-6 text-black" />
+              )}
             </button>
           </div>
+
+          {/* Navigation - Desktop */}
+          <div className="hidden md:flex grow justify-evenly lg:px-20">
+            {[
+              { label: 'Home', path: '/' },
+              { label: 'Courses', path: '/courses' },
+              { label: 'Products', path: '/product' },
+              { label: 'Blogs', path: '/blogs' },
+              { label: 'Testimonials', path: '/testimonials' },
+              { label: 'About Us', path: '/about' },
+            ].map((item) => (
+              <button
+                key={item.path}
+                className={`text-black hover:text-gray-900 px-2 ${
+                  pathname === item.path
+                    ? 'border-2 border-blue-500 rounded-lg'
+                    : ''
+                }`}
+                onClick={() => router.push(item.path)}
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+
+          {/* Sign Up Button */}
           <button
-            className="bg-[#83ABED] hover:bg-[#3367D6] text-white p-1 px-8 rounded-md flex drop-shadow-lg"
+            className="hidden md:block bg-[#83ABED] hover:bg-[#3367D6] text-white p-1 px-8 rounded-md drop-shadow-lg"
             onClick={() => router.push('/signup')}
           >
             Sign Up
           </button>
         </div>
+
+        {/* Mobile Menu */}
+        {isMobileMenuOpen && (
+          <div className="absolute w-screen left-0 h-screen md:hidden bg-white/90 backdrop-blur-xl rounded-b-2xl drop-shadow-lg p-4">
+            {[
+              { label: 'Home', path: '/' },
+              { label: 'Courses', path: '/courses' },
+              { label: 'Products', path: '/product' },
+              { label: 'Blogs', path: '/blogs' },
+              { label: 'Testimonials', path: '/testimonials' },
+              { label: 'About Us', path: '/about' },
+            ].map((item) => (
+              <button
+                key={item.path}
+                className={`block w-full text-left py-2 px-4 text-black hover:text-gray-900 ${
+                  pathname === item.path ? 'bg-blue-100 rounded-lg' : ''
+                }`}
+                onClick={() => {
+                  router.push(item.path);
+                  setIsMobileMenuOpen(false);
+                }}
+              >
+                {item.label}
+              </button>
+            ))}
+            <button
+              className="w-full mt-2 bg-[#83ABED] hover:bg-[#3367D6] text-white p-2 rounded-md drop-shadow-lg"
+              onClick={() => {
+                router.push('/signup');
+                setIsMobileMenuOpen(false);
+              }}
+            >
+              Sign Up
+            </button>
+          </div>
+        )}
       </div>
     </nav>
   );

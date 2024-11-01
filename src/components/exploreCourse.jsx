@@ -88,8 +88,8 @@ const categories = [
 ];
 
 const CourseCard = ({ course }) => (
-  <div className="min-w-[300px] h-[300px] flex items-end z-20">
-    <div className="h-[250px] w-full rounded-lg flex items-center bg-gradient-to-br from-[#D02F58]/50 to-[#3E8FC3] p-[2px]">
+  <div className="w-[250px] md:min-w-[300px] h-[300px] flex items-end z-20">
+    <div className="h-[250px] w-[300px] rounded-lg flex items-center bg-gradient-to-br from-[#D02F58]/50 to-[#3E8FC3] p-[2px]">
       <div className="relative w-full h-full bg-white rounded-lg p-4 flex flex-col justify-end ">
         <span className="text-sm text-green-500 font-semibold">
           {course.level}
@@ -163,19 +163,19 @@ export const ExploreCourses = () => {
   };
 
   return (
-    <div className="relative py-10 lg:px-20 w-screen min-h-screen overflow-hidden p-8">
-      <h2 className="text-5xl font-extrabold text-[#3770CD] z-20">
+    <div className="relative py-10 lg:px-20 w-screen min-h-screen overflow-hidden p-4">
+      <h2 className="text-5xl font-extrabold text-[#3770CD] relative z-20">
         Explore Courses
       </h2>
-      <p className="text-black/70 mt-2 mb-6 text-lg max-w-lg z-20">
+      <p className="text-black/70 mt-2 mb-6 text-lg max-w-lg relative z-20">
         Discover our comprehensive courses and elevate your expertise with
         cutting-edge knowledge designed to advance your career in the tech
         industry.
       </p>
 
       <div className="flex flex-col items-center w-full">
-        <div className="w-full flex items-center mb-4">
-          <div className="relative w-full inline-block  bg-[#3770CD] rounded-full z-20 whitespace-nowrap overflow-x-scroll overflow-y-hidden no-scrollbar">
+        <div className="w-full flex justify-center items-center mb-4">
+          <div className="relative w-full max-w-3xl inline-block  bg-[#3770CD] rounded-full z-20 whitespace-nowrap overflow-x-scroll overflow-y-hidden no-scrollbar">
             {categories.map((category) => (
               <button
                 key={category}
@@ -195,7 +195,7 @@ export const ExploreCourses = () => {
           </div>
         </div>
 
-        <div className="w-full flex justify-center items-center mt-10">
+        <div className="w-full flex justify-center items-center md:mt-10">
           <button
             onClick={() => handleScroll('left')}
             disabled={disableLeft}
@@ -229,7 +229,7 @@ export const ExploreCourses = () => {
 
       <div className="vectorblurcourses z-10 absolute bottom-10 bg-[#3e8fc3]/55 rounded-full"></div>
       <div className="vectorblurcourses z-10 absolute top-0 right-10  bg-[#3e8fc3]/55 rounded-full"></div>
-      <div className="absolute grid grid-cols-2 gap-2 top-[18%] -left-16">
+      <div className="absolute grid grid-cols-2 gap-2 top-[18%] -left-16 z-10">
         <ShadowGlassBox />
         <GlassBox />
         <ShadowGlassBox invisible={true} />
@@ -240,7 +240,7 @@ export const ExploreCourses = () => {
         <ShadowGlassBox />
       </div>
 
-      <div className="absolute grid grid-cols-3 gap-2 top-0 right-0">
+      <div className="max-md:hidden absolute grid grid-cols-3 gap-2 top-0 right-0">
         <ShadowGlassBox />
         <GlassBox invisible={true} />
         <ShadowGlassBox invisible={true} />
