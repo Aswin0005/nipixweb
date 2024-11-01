@@ -3,7 +3,7 @@ import Image from 'next/image';
 export const CoursesHero = () => {
   return (
     <div className="w-screen min-h-screen flex">
-      <div className="grow bg-[image:linear-gradient(to_right,#3770CD_0%,#3770CD_50%,#f7f7f7_50%,#f7f7f7_100%)]  flex flex-col justify-center items-center ">
+      <div className="grow bg-[image:linear-gradient(to_right,#3770CD_0%,#3770CD_50%,#f7f7f7_50%,#f7f7f7_100%)]  flex flex-col justify-center items-center p-8">
         <h1 className="color-inverse-head text-5xl font-extrabold mt-20">
           All Skills you need in One Place
         </h1>
@@ -22,7 +22,7 @@ export const CoursesHero = () => {
           </button>
         </div>
 
-        <div className="grid grid-cols-4 grid-rows-2 gap-10 max-w-sm h-1/2 z-20">
+        <div className="grid grid-cols-4 grid-rows-2 gap-10 max-w-sm min-h-1/2 z-20 mt-4">
           <div className="flex flex-col justify-center items-center gap-2">
             <span className="bg-[#83ABED] aspect-square w-20 rounded-lg flex justify-center items-center">
               <Image
@@ -140,41 +140,41 @@ export const CoursesHero = () => {
 
       {/* Cards */}
       <div className="hidden lg:flex max-w-xl items-center">
-        <div className="w-full h-[450px] grid grid-cols-2 gap-4 pr-6">
-          <span className="w-60 h-48 rounded-2xl mt-14 overflow-hidden">
+        <div className="w-full min-h-[450px] grid grid-cols-2 gap-4 pr-8 overflow-hidden">
+          <span className=" mt-14 overflow-hidden">
             <Image
               src="/mask.png"
               width={240}
               height={192}
               alt="Webinar"
-              className="z-20 object-none object-center"
+              className="z-20 object-none object-center rounded-2xl"
             />
           </span>
-          <span className="w-60 h-48 rounded-2xl overflow-hidden">
+          <span className=" overflow-hidden">
             <Image
               src="/mask.png"
               width={240}
               height={192}
               alt="Webinar"
-              className="z-20 object-none object-center"
+              className="z-20 object-none object-center rounded-2xl"
             />
           </span>
-          <span className="w-60 h-48 rounded-2xl mt-14 overflow-hidden">
+          <span className=" mt-14 overflow-hidden">
             <Image
               src="/mask.png"
               width={240}
               height={192}
               alt="Webinar"
-              className="z-20 object-none object-center"
+              className="z-20 object-none object-center rounded-2xl"
             />
           </span>
-          <span className="w-60 h-48 rounded-2xl overflow-hidden">
+          <span className=" overflow-hidden">
             <Image
               src="/mask.png"
               width={240}
               height={192}
               alt="Webinar"
-              className="z-20 object-none object-center"
+              className="z-20 object-none object-center rounded-2xl"
             />
           </span>
         </div>

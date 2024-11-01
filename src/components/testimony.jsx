@@ -114,13 +114,16 @@ export const Testimony = () => {
       checkButtons();
       scrollContainerRef.current.addEventListener('scroll', checkButtons);
       return () =>
-        scrollContainerRef?.current?.removeEventListener('scroll', checkButtons);
+        scrollContainerRef?.current?.removeEventListener(
+          'scroll',
+          checkButtons
+        );
     }
   }, []);
 
   return (
-    <div className="px-14 relative w-screen min-h-screen">
-      <div className="mb-8 z-20">
+    <div className="px-14 relative w-screen min-h-screen  overflow-x-hidden">
+      <div className="my-8 z-20">
         <h2 className="text-5xl font-extrabold text-[#3770CD]">
           Our Positive{' '}
           <span className="bg-gradient-to-r from-[#3770CD] to-[#3E8FC3]  text-white px-2 py-1 rounded-lg italic">

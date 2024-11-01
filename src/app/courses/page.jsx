@@ -1,4 +1,7 @@
+import { CourseWebinars } from '@/components/courseWebinars';
 import { ExploreCourses } from '@/components/exploreCourse';
+import { Footer } from '@/components/footer';
+import { Testimony } from '@/components/testimony';
 
 const { CoursesHero } = require('@/components/courseshero');
 
@@ -7,6 +10,9 @@ const CoursesPage = () => {
     <div className="bg-[#f7f7f7]">
       <CoursesHero />
       <ExploreCourses />
+      <CourseWebinars/>
+      <Testimony/>
+      <Footer/>
     </div>
   );
 };

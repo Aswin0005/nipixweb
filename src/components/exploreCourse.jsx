@@ -163,7 +163,7 @@ export const ExploreCourses = () => {
   };
 
   return (
-    <div className="relative py-10 px-5 lg:px-20 w-screen h-screen">
+    <div className="relative py-10 lg:px-20 w-screen min-h-screen overflow-hidden p-8">
       <h2 className="text-5xl font-extrabold text-[#3770CD] z-20">
         Explore Courses
       </h2>
@@ -173,28 +173,29 @@ export const ExploreCourses = () => {
         industry.
       </p>
 
-      <div className="flex flex-col items-center">
-        <div className="relative  inline-block mb-4 bg-[#3770CD] rounded-full  z-20">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => handleCategoryChange(category)}
-              className={`px-4 py-2 rounded-full transition-all duration-300 ${
-                selectedCategory === category
-                  ? 'bg-white text-[#3770CD] font-medium'
-                  : 'bg-[#3770CD] text-white font-medium'
-              }`}
-            >
-              {category}
-            </button>
-          ))}
-
-          <div className="absolute  top-1/2 -translate-y-1/2 -right-9 w-12 h-12 bg-white rounded-full flex justify-center items-center shadow">
+      <div className="flex flex-col items-center w-full">
+        <div className="w-full flex items-center mb-4">
+          <div className="relative w-full inline-block  bg-[#3770CD] rounded-full z-20 whitespace-nowrap overflow-x-scroll overflow-y-hidden no-scrollbar">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => handleCategoryChange(category)}
+                className={`px-4 py-2 rounded-full transition-all duration-300 ${
+                  selectedCategory === category
+                    ? 'bg-white text-[#3770CD] font-medium'
+                    : 'bg-[#3770CD] text-white font-medium'
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+          <div className="w-12 h-12 bg-white rounded-full flex justify-center items-center shadow ml-2 z-20">
             <ChevronRight />
           </div>
         </div>
 
-        <div className="flex justify-center items-center mt-10">
+        <div className="w-full flex justify-center items-center mt-10">
           <button
             onClick={() => handleScroll('left')}
             disabled={disableLeft}
@@ -226,8 +227,8 @@ export const ExploreCourses = () => {
 
       {/* Background */}
 
-      <div className="vectorblurcourses z-10 absolute -bottom-10 bg-[#3e8fc3]/55 rounded-full"></div>
-      <div className="vectorblurcourses z-10 absolute top-0 -right-10  bg-[#3e8fc3]/55 rounded-full"></div>
+      <div className="vectorblurcourses z-10 absolute bottom-10 bg-[#3e8fc3]/55 rounded-full"></div>
+      <div className="vectorblurcourses z-10 absolute top-0 right-10  bg-[#3e8fc3]/55 rounded-full"></div>
       <div className="absolute grid grid-cols-2 gap-2 top-[18%] -left-16">
         <ShadowGlassBox />
         <GlassBox />
