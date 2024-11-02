@@ -1,4 +1,8 @@
+'use client';
+import { useRouter} from 'next/navigation';
+
 export const Gallery = () => {
+  const router = useRouter();
   return (
     <div className="relative w-screen min-h-screen md:h-screen overflow-hidden p-2 md:p-8">
       <div className="relative max-sm:flex max-sm:flex-col-reverse w-[95%] h-[95%] mx-auto bg-gradient-to-tl from-[#3770CD]/50 from-[10%] to-[#9DCBE8]/30 to-[40%] rounded-lg">
@@ -56,7 +60,7 @@ export const Gallery = () => {
             posts showcasing our journey and the dynamic spirit that drives our
             company forward.
           </p>
-          <button className="bg-blue-500 text-white text-sm rounded-full px-6 py-2 mt-6">
+          <button className="bg-blue-500 text-white text-sm rounded-full px-6 py-2 mt-6" onClick={() => router.push('/about')}>
             Explore
           </button>
         </div>
