@@ -1,5 +1,5 @@
-"use server";
-import { db } from '../../../../firebaseConfig';
+'use server';
+import { db } from '../../../../../firebaseConfig';
 import { NextResponse } from 'next/server';
 
 export async function POST(req, res) {

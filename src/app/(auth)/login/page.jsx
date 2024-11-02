@@ -1,6 +1,50 @@
+'use client';
+import { useState } from 'react';
+import { signInWithPopup } from 'firebase/auth';
+import { auth, googleProvider } from '../../../../firebaseConfig';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 const LoginPage = () => {
+  // State to store input values
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const router = useRouter();
+
+  // Function to handle form submission
+  const handleLogin = async () => {
+    try {
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        console.log('Login successful');
+        router.push('/');
+      } else {
+        console.error('Login failed:', data.message);
+      }
+    } catch (error) {
+      console.error('An error occurred during login:', error);
+    }
+  };
+
+  const handleGoogleLogin = async () => {
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      const user = result.user;
+      console.log('User signed in:', user);
+      // Handle user data (e.g., save to database, set session)
+    } catch (error) {
+      console.error('Error during Google sign-in:', error.message);
+    }
+  };
+
   return (
     <div className="w-screen h-screen flex justify-center items-center relative p-4 md:p-8 md:pt-32">
       <div
@@ -30,6 +74,8 @@ const LoginPage = () => {
             </p>
             <input
               type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="w-full bg-transparent focus:outline-none font-medium"
               placeholder="Enter your email"
             />
@@ -41,12 +87,17 @@ const LoginPage = () => {
             </p>
             <input
               type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               className="w-full bg-transparent focus:outline-none font-medium"
               placeholder="Enter your password"
             />
           </div>
 
-          <button className="border px-8 py-3 bg-[#83ABED] rounded-xl text-lg font-semibold  text-white mt-6">
+          <button
+            onClick={handleLogin}
+            className="border px-8 py-3 bg-[#83ABED] rounded-xl text-lg font-semibold text-white mt-6"
+          >
             Login In
           </button>
 
@@ -56,30 +107,18 @@ const LoginPage = () => {
             <div className="flex-1 h-[1px] bg-[#83ABED]"></div>
           </div>
 
-          <div className="flex justify-between p-2 gap-5">
-            <button className="w-12 h-12 bg-[#3E8FC3]/10 rounded-[8px] flex justify-center items-center shadow-[0px_4px_4px_rgba(0,0,0,0.25)]">
+          <div className="w-full md:w-[65%] flex justify-between gap-5">
+            <button
+              onClick={() => handleGoogleLogin()}
+              className="w-full py-2 bg-[#3E8FC3]/10 rounded-[8px] flex gap-2 justify-center items-center shadow-[0px_4px_4px_rgba(0,0,0,0.25)]"
+            >
               <Image
                 src="/google.png"
                 alt="google_icon"
                 width={20}
                 height={20}
               />
-            </button>
-            <button className="w-12 h-12 bg-[#3E8FC3]/10 rounded-[8px] flex justify-center items-center shadow-[0px_4px_4px_rgba(0,0,0,0.25)]">
-              <Image
-                src="/facebook.png"
-                alt="facebook_icon"
-                width={20}
-                height={20}
-              />
-            </button>
-            <button className="w-12 h-12 bg-[#3E8FC3]/10 rounded-[8px] flex justify-center items-center shadow-[0px_4px_4px_rgba(0,0,0,0.25)]">
-              <Image
-                src="/twitter.png"
-                alt="twitter_icon"
-                width={20}
-                height={20}
-              />
+              <p>Sign up with Google</p>
             </button>
           </div>
         </div>

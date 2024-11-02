@@ -113,8 +113,8 @@ export const Footer = () => {
               <Facebook />
             </a>
           </div>
-          <p className="mt-4 md:mt-0 text-gray-600 text-sm">
-            Designed by <strong>GLINT</strong>
+          <p className="mt-4 md:mt-0 text-gray-600 text-lg">
+            Designed & Developed by <strong className='text-2xl font-extrabolf'>GLINT</strong>
           </p>
         </div>
       </div>
