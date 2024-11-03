@@ -2,8 +2,7 @@ import { CourseWebinars } from '@/components/courseWebinars';
 import { ExploreCourses } from '@/components/exploreCourse';
 import { Footer } from '@/components/footer';
 import { Testimony } from '@/components/testimony';
-
-const { CoursesHero } = require('@/components/courseshero');
+import { CoursesHero } from '@/components/courseshero';
 
 const CoursesPage = () => {
   return (

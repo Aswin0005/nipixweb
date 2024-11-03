@@ -1,6 +1,43 @@
-import Image from 'next/image';
+"use client";
+import Image from "next/image";
+import { useState } from "react";
 
 export const CoursesHero = () => {
+  const [isInputClicked, setIsInputClicked] = useState(false);
+  const [inputValue, setInputValue] = useState("");
+  const courses = [
+    {
+      id: 1,
+      courseName: "JavaScript for Beginners",
+      author: "Billa",
+      level: "Beginner",
+      image: "/webinarphoto.png",
+    },
+    {
+      id: 2,
+      courseName: "Advanced Python Programming",
+      author: "Dhanush Shankar",
+      level: "Advanced",
+      image: "/webinarphoto.png",
+    },
+    {
+      id: 3,
+      courseName: "Full-Stack Web Development",
+      author: "Thalapathy Vijay",
+      level: "Intermediate",
+      image: "/webinarphoto.png",
+    },
+    {
+      id: 4,
+      courseName: "UI/UX Design Fundamentals",
+      author: "Ajith Kumar",
+      level: "Beginner",
+      image: "/webinarphoto.png",
+    },
+  ];
+  const filteredCourses = courses.filter((course) =>
+    course.courseName.toLowerCase().includes(inputValue.toLowerCase())
+  );
   return (
     <div className="w-screen min-h-screen flex">
       <div className="grow bg-[image:linear-gradient(to_right,#3770CD_0%,#3770CD_50%,#f7f7f7_50%,#f7f7f7_100%)]  flex flex-col justify-center items-center  p-4 md:p-8">
@@ -16,10 +53,57 @@ export const CoursesHero = () => {
             type="text"
             placeholder="eg'Angular Js'"
             className="w-full h-12 border rounded-full p-4"
+            onFocus={() => setIsInputClicked(true)}
+            onBlur={() => setIsInputClicked(false)}
+            onChange={(e) => setInputValue(e.target.value)}
           />
           <button className="absolute right-0 bg-blue-500 text-white text-sm rounded-full m-2 px-6 py-2">
             Search Courses
           </button>
+          {isInputClicked && inputValue.length > 0 && (
+            <div className="absolute z-30 top-[calc(100%+5px)]  w-full bg-white  mt-2 rounded-[25px] shadow-[4px_4px_10px_rgba(0,0,0,0.25)]">
+              {filteredCourses.length > 0 ? (
+                filteredCourses.map((course) => (
+                  <div
+                    key={course.id}
+                    className="flex justify-between hover:bg-blue-100 items-center border-b p-4 last:border-b-0  rounded-[25px] cursor-pointer"
+                  >
+                    <div>
+                      <h2 className="text-lg font-semibold">
+                        {course.courseName}
+                      </h2>
+                      <div className="flex items-center text-sm font-semibold">
+                        <span
+                          className={`${
+                            course.level === "Beginner"
+                              ? "text-green-500"
+                              : course.level === "Intermediate"
+                              ? "text-yellow-500"
+                              : course.level === "Advanced"
+                              ? "text-red-500"
+                              : ""
+                          }`}
+                        >
+                          {course.level}
+                        </span>
+                        <span className="mx-2 text-gray-400">|</span>
+                        <span className="text-gray-600">{course.author}</span>
+                      </div>
+                    </div>
+                    <Image
+                      src={course.image}
+                      alt={course.courseName}
+                      width={50}
+                      height={50}
+                      className="rounded"
+                    />
+                  </div>
+                ))
+              ) : (
+                <p className="text-sm text-gray-500 p-4">No courses found.</p>
+              )}
+            </div>
+          )}
         </div>
 
         <div className="grid grid-cols-3 md:grid-cols-4 md:grid-rows-2 gap-5 md:gap-10 max-w-sm min-h-1/2 z-20 mt-4">
