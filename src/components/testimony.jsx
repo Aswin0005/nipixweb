@@ -124,7 +124,7 @@ export const Testimony = () => {
   return (
     <div className="px-4 pt-4 md:px-8 md:pt-8 relative w-screen min-h-screen  overflow-x-hidden">
       <div className="my-8 z-20">
-        <h2 className="text-5xl font-extrabold text-[#3770CD] leading-[65px]">
+        <h2 className="max-md:text-center text-5xl font-extrabold text-[#3770CD] leading-[65px]">
           Our Positive{' '}
           <span className="bg-gradient-to-r from-[#3770CD] to-[#3E8FC3]  text-white px-2 py-1 rounded-lg italic">
             Social Impact

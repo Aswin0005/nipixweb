@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from 'next/image';
 
 export const Webinars = () => {
   return (
@@ -18,9 +18,15 @@ export const Webinars = () => {
         </button>
       </div>
 
-      <Image src="/webinar.png" width={400} height={400} alt="Webinar" className="z-20" />
+      <Image
+        src="/webinar.png"
+        width={400}
+        height={400}
+        alt="Webinar"
+        className="z-20"
+      />
 
-       {/* Background Vectors */}
+      {/* Background Vectors */}
       <div className="vectorblurtop z-10 absolute -top-[8%] -right-[15%] bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-white from-[5%] to-[#3E8FC3] to-[95%] rounded-full"></div>
       <div className="vectorblurbottom z-10 absolute -bottom-10 -left-[20%] bg-[radial-gradient(circle_at_bottom_right,_var(--tw-gradient-stops))] from-white from-[5%] to-[#3E8FC3] to-[95%]  rounded-full"></div>
     </div>

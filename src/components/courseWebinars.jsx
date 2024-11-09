@@ -38,7 +38,7 @@ export const CourseWebinars = () => {
   ];
 
   return (
-    <div className="relative w-screen min-h-screen flex flex-col-reverse md:flex-row  gap-4 md:gap-10 lg:justify-between p-4 lg:p-20  items-center overflow-hidden">
+    <div className="relative w-screen min-h-screen flex flex-col-reverse md:flex-row  gap-4 md:gap-10 lg:justify-between p-4 lg:p-20  items-center ">
       <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-6 mt-6 max-w-3xl z-20 max-h-[450px] overflow-scroll no-scrollbar">
         {webinars.map((webinar, index) => (
           <div
@@ -82,7 +82,7 @@ export const CourseWebinars = () => {
         <h2 className="text-5xl font-extrabold text-[#3770CD] relative z-20">
           Join Webinar
         </h2>
-        <p className="text-black/70 mt-2 mb-6 text-md max-w-lg relative z-20">
+        <p className="text-black/70 mt-2 mb:mb-6 text-md max-w-lg relative z-20">
           Discover our comprehensive courses and elevate your expertise with
           cutting-edge knowledge designed to advance your career in the tech
           industry.
@@ -114,7 +114,7 @@ export const CourseWebinars = () => {
         <ShadowGlassBox invisible={true} />
       </div>
 
-      <div className="absolute grid grid-cols-3 gap-2 top-0 right-0">
+      <div className="max-md:hidden absolute grid grid-cols-3 gap-2 top-0 right-0">
         <ShadowGlassBox />
         <GlassBox invisible={true} />
         <ShadowGlassBox invisible={true} />

@@ -1,7 +1,7 @@
 import Image from 'next/image';
 export const Categories = () => {
   return (
-    <div className="relative w-screen min-h-screen flex flex-col md:flex-row  justify-center items-center gap-20 p-8">
+    <div className="relative w-screen  flex flex-col md:flex-row  justify-center items-center gap-20 p-8">
       <div className="relative max-w-96 z-20 flex flex-col max-md:items-center max-md:justify-center">
         <h1 className="text-5xl text-[#3770CD] font-extrabold z-30 max-sm:text-center">
           Explore <br></br>Our Categories

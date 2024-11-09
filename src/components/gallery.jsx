@@ -4,7 +4,7 @@ import { useRouter} from 'next/navigation';
 export const Gallery = () => {
   const router = useRouter();
   return (
-    <div className="relative w-screen min-h-screen md:h-screen overflow-hidden p-2 md:p-8">
+    <div className="relative w-screen min-h-screen md:h-screen  p-2 md:p-8">
       <div className="relative max-sm:flex max-sm:flex-col-reverse w-[95%] h-[95%] mx-auto bg-gradient-to-tl from-[#3770CD]/50 from-[10%] to-[#9DCBE8]/30 to-[40%] rounded-lg">
         <div className="w-full h-full grid grid-cols-3 md:grid-cols-10 md:grid-rows-6 gap-2">
           <div className="col-span-3 md:col-span-4 md:row-span-2 rounded  overflow-hidden">

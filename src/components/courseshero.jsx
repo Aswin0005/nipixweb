@@ -3,11 +3,11 @@ import Image from 'next/image';
 export const CoursesHero = () => {
   return (
     <div className="w-screen min-h-screen flex">
-      <div className="grow bg-[image:linear-gradient(to_right,#3770CD_0%,#3770CD_50%,#f7f7f7_50%,#f7f7f7_100%)]  flex flex-col justify-center items-center  p-4 md:p-8">
-        <h1 className="color-inverse-head text-5xl font-extrabold mt-20 max-md:text-center">
+      <div className="grow md:bg-[image:linear-gradient(to_right,#3770CD_0%,#3770CD_50%,#f7f7f7_50%,#f7f7f7_100%)]  flex flex-col justify-center items-center  p-4 md:p-8">
+        <h1 className="text-blue-500 md:color-inverse-head text-5xl font-extrabold mt-20 max-md:text-center">
           All Skills you need in One Place
         </h1>
-        <p className="text-black/70 color-inverse-subhead font-medium max-md:text-center">
+        <p className="text-black/70 md:color-inverse-subhead font-medium max-md:text-center">
           From key competencies to advanced technical knowledge, Nipix
           Technology empowers your professional growth.
         </p>

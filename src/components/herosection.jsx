@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export const HeroSection = () => {
   return (
-    <div className="relative w-screen min-h-screen flex flex-col justify-center items-center overflow-hidden p-2 md:p-8">
+    <div className="relative w-screen min-h-screen flex flex-col justify-center items-center p-2 md:p-8">
       {/* Background Vectors */}
       <div className="vectorblurtop z-10 absolute -top-[8%] -right-[15%] bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-white from-[5%] to-[#3E8FC3] to-[95%] rounded-full"></div>
       <div className="vectorblurbottom z-10 absolute top-[60%] -translate-y-1/2 -left-[15%] bg-[radial-gradient(circle_at_bottom_right,_var(--tw-gradient-stops))] from-white from-[5%] to-[#3E8FC3] to-[95%]  rounded-full"></div>

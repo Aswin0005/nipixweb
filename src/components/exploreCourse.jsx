@@ -163,11 +163,11 @@ export const ExploreCourses = () => {
   };
 
   return (
-    <div className="relative py-10 lg:px-20 w-screen min-h-screen overflow-hidden p-4">
-      <h2 className="text-5xl font-extrabold text-[#3770CD] relative z-20">
+    <div className="relative py-10 lg:px-20 w-screen  p-4">
+      <h2 className="max-md:text-center max-md:text-4xl text-5xl font-extrabold text-[#3770CD] relative z-20">
         Explore Courses
       </h2>
-      <p className="text-black/70 mt-2 mb-6 text-lg max-w-lg relative z-20">
+      <p className="max-md:text-center text-black/70 mt-2 mb-6 text-lg max-w-lg relative z-20">
         Discover our comprehensive courses and elevate your expertise with
         cutting-edge knowledge designed to advance your career in the tech
         industry.
@@ -190,16 +190,16 @@ export const ExploreCourses = () => {
               </button>
             ))}
           </div>
-          <div className="w-12 h-12 bg-white rounded-full flex justify-center items-center shadow ml-2 z-20">
+          <div className="w-12 h-12 bg-white rounded-full hidden md:flex justify-center items-center shadow ml-2 z-20">
             <ChevronRight />
           </div>
         </div>
 
-        <div className="w-full flex justify-center items-center md:mt-10">
+        <div className="w-full flex justify-center items-center">
           <button
             onClick={() => handleScroll('left')}
             disabled={disableLeft}
-            className={`bg-white w-10 h-10 rounded-full flex justify-center items-center z-20 ${
+            className={`bg-white w-10 h-10 rounded-full hidden md:flex justify-center items-center z-20 ${
               disableLeft ? 'opacity-50 cursor-not-allowed' : ''
             }`}
           >
@@ -216,7 +216,7 @@ export const ExploreCourses = () => {
           <button
             onClick={() => handleScroll('right')}
             disabled={disableRight}
-            className={`bg-white w-10 h-10 rounded-full flex justify-center items-center z-20 ${
+            className={`bg-white w-10 h-10 rounded-full hidden md:flex justify-center items-center z-20 ${
               disableRight ? 'opacity-50 cursor-not-allowed' : ''
             }`}
           >
