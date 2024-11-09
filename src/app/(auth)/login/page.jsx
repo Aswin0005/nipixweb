@@ -4,6 +4,7 @@ import { signInWithPopup } from 'firebase/auth';
 import { auth, googleProvider } from '../../../../firebaseConfig';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 
 const LoginPage = () => {
   // State to store input values
@@ -14,21 +15,8 @@ const LoginPage = () => {
   // Function to handle form submission
   const handleLogin = async () => {
     try {
-      const response = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
-      });
-
-      const data = await response.json();
-      if (data.success) {
-        console.log('Login successful');
-        router.push('/');
-      } else {
-        console.error('Login failed:', data.message);
-      }
+      await signInWithEmailAndPassword(auth, email, password);
+      router.push('/');
     } catch (error) {
       console.error('An error occurred during login:', error);
     }

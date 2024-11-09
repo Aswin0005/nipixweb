@@ -1,26 +1,29 @@
-"use client";
-import Image from "next/image";
-import { useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import star from "../../../../public/star.png";
-import uno_img1 from "../../../../public/uno_img1.png";
-import uno_img2 from "../../../../public/uno_img2.png";
-import uno_img3 from "../../../../public/uno_img3.png";
-import uno_img4 from "../../../../public/uno_img4.png";
+'use client';
+import Image from 'next/image';
+import { useState, useEffect } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import star from '../../../../public/star.png';
+import uno_img1 from '../../../../public/uno_img1.png';
+import uno_img2 from '../../../../public/uno_img2.png';
+import uno_img3 from '../../../../public/uno_img3.png';
+import uno_img4 from '../../../../public/uno_img4.png';
+import { useSearchParams } from 'next/navigation';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '../../../../firebaseConfig';
 
 const ProductItem = () => {
   const images = [uno_img1, uno_img2, uno_img3, uno_img4];
 
   const details = [
-    { label: "Brand", value: "Ardunio" },
-    { label: "Width", value: "8cm" },
-    { label: "Model number", value: "RC-A-4058" },
-    { label: "Height", value: "1.5cm" },
-    { label: "Type", value: "Micro Controller Board" },
-    { label: "Weight", value: "70g" },
-    { label: "Material", value: "Epoxy" },
-    { label: "Manufacturer", value: "Kuongshun Electronic Ltd., Karnataka" },
-    { label: "Power Source", value: "DC" },
+    { label: 'Brand', value: 'Ardunio' },
+    { label: 'Width', value: '8cm' },
+    { label: 'Model number', value: 'RC-A-4058' },
+    { label: 'Height', value: '1.5cm' },
+    { label: 'Type', value: 'Micro Controller Board' },
+    { label: 'Weight', value: '70g' },
+    { label: 'Material', value: 'Epoxy' },
+    { label: 'Manufacturer', value: 'Kuongshun Electronic Ltd., Karnataka' },
+    { label: 'Power Source', value: 'DC' },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -45,56 +48,59 @@ const ProductItem = () => {
   const decrementQuantity = () =>
     setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
 
+  const searchParams = useSearchParams();
   const [ratings] = useState([
-    { stars: 5, label: "Excellent", count: 32, width: "85%" },
-    { stars: 4, label: "Very Good", count: 17, width: "70%" },
-    { stars: 3, label: "Good", count: 8, width: "38%" },
-    { stars: 2, label: "Average", count: 3, width: "10%" },
-    { stars: 1, label: "Poor", count: 2, width: "6%" },
+    { stars: 5, label: 'Excellent', count: 32, width: '85%' },
+    { stars: 4, label: 'Very Good', count: 17, width: '70%' },
+    { stars: 3, label: 'Good', count: 8, width: '38%' },
+    { stars: 2, label: 'Average', count: 3, width: '10%' },
+    { stars: 1, label: 'Poor', count: 2, width: '6%' },
   ]);
 
   const [topReviews, setTopReviews] = useState([
-    { tag: "Good Quality", count: 0 },
-    { tag: "Durable", count: 0 },
-    { tag: "Nice Packaging", count: 0 },
-    { tag: "Trusted", count: 0 },
-    { tag: "Value for Money", count: 0 },
-    { tag: "No Damage", count: 0 },
+    { tag: 'Good Quality', count: 0 },
+    { tag: 'Durable', count: 0 },
+    { tag: 'Nice Packaging', count: 0 },
+    { tag: 'Trusted', count: 0 },
+    { tag: 'Value for Money', count: 0 },
+    { tag: 'No Damage', count: 0 },
   ]);
 
   const [reviews, setReviews] = useState([
     {
-      name: "Aswinsundhar",
-      date: "15th Aug 2024",
-      rating: "4.9",
-      reviewTitle: "Amazing Product",
+      name: 'Aswinsundhar',
+      date: '15th Aug 2024',
+      rating: '4.9',
+      reviewTitle: 'Amazing Product',
       reviewContent:
-        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Est velit ea sed adipisci nobis nemo.",
+        'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Est velit ea sed adipisci nobis nemo.',
     },
     {
-      name: "Dinesh Kumar",
-      date: "28th Sept 2024",
-      rating: "4.5",
-      reviewTitle: "Super Quality",
+      name: 'Dinesh Kumar',
+      date: '28th Sept 2024',
+      rating: '4.5',
+      reviewTitle: 'Super Quality',
       reviewContent:
-        "Deleniti, officiis tenetur. Est velit ea sed adipisci nobis nemo. Adkjf reowe fadfjhdf aweryoieu adfjlafj sdfouadfasf",
+        'Deleniti, officiis tenetur. Est velit ea sed adipisci nobis nemo. Adkjf reowe fadfjhdf aweryoieu adfjlafj sdfouadfasf',
     },
     {
-      name: "Cloudin",
-      date: "3th Oct 2024",
-      rating: "4.6",
-      reviewTitle: "Value for Money",
+      name: 'Cloudin',
+      date: '3th Oct 2024',
+      rating: '4.6',
+      reviewTitle: 'Value for Money',
       reviewContent:
-        "Est velit ea sed adipisci nobis nemo. Adkjf reowe fadfjhdf aweryoieu adfjlafj sdfouadfasf",
+        'Est velit ea sed adipisci nobis nemo. Adkjf reowe fadfjhdf aweryoieu adfjlafj sdfouadfasf',
     },
   ]);
 
   const [newReview, setNewReview] = useState({
-    name: "",
+    name: '',
     rating: 0,
-    reviewTitle: "",
-    reviewContent: "",
+    reviewTitle: '',
+    reviewContent: '',
   });
+
+  const [userId, setUserId] = useState(null);
 
   const handleReviewChange = (e) => {
     const { name, value } = e.target;
@@ -121,15 +127,15 @@ const ProductItem = () => {
     setTopReviews((prevTopReviews) => {
       const updatedTopReviews = [...prevTopReviews];
       const valueForMoneyIndex = updatedTopReviews.findIndex(
-        (tr) => tr.tag === "Value for Money"
+        (tr) => tr.tag === 'Value for Money'
       );
-      if (newReview.reviewTitle.includes("Value for Money")) {
+      if (newReview.reviewTitle.includes('Value for Money')) {
         updatedTopReviews[valueForMoneyIndex].count += 1;
       }
       return updatedTopReviews;
     });
 
-    setNewReview({ name: "", rating: 0, reviewTitle: "", reviewContent: "" });
+    setNewReview({ name: '', rating: 0, reviewTitle: '', reviewContent: '' });
   };
 
   // Calculate overall rating
@@ -142,6 +148,23 @@ const ProductItem = () => {
         ).toFixed(1)
       : 0;
   const filledStars = Math.round(averageRating);
+
+  useEffect(() => {
+    const id = searchParams.get('id');
+    console.log('ID', id);
+  }, []);
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUserId(user.uid);
+      } else {
+        setUserId(null);
+      }
+    });
+  }, [auth]);
+
+  console.log('User', userId);
   return (
     <div className="pt-24 md:pt-32 mx-auto w-screen min-h-screen overflow-hidden p-4 md:p-8">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -176,8 +199,8 @@ const ProductItem = () => {
                 key={index}
                 className={`h-16 w-16 lg:h-[75px] lg:w-[75px] xl:h-[96px] xl:w-[96px] rounded-xl cursor-pointer ${
                   currentIndex === index
-                    ? "border-2 border-slate-700"
-                    : "border border-slate-300"
+                    ? 'border-2 border-slate-700'
+                    : 'border border-slate-300'
                 }`}
                 onClick={() => handleThumbnailClick(index)}
               >
@@ -356,10 +379,10 @@ const ProductItem = () => {
                   <Image
                     src={star}
                     alt=""
-                    height={30} 
-                    width={30} 
+                    height={30}
+                    width={30}
                     className="pb-1"
-                    style={{ opacity: index < newReview.rating ? 1 : 0.5   }}
+                    style={{ opacity: index < newReview.rating ? 1 : 0.5 }}
                   />
                 </span>
               ))}
@@ -367,16 +390,6 @@ const ProductItem = () => {
           </div>
 
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-            <input
-              type="text"
-              name="name"
-              placeholder="Your Name"
-              value={newReview.name}
-              onChange={handleReviewChange}
-              required
-              className="border rounded p-2"
-            />
-
             <input
               type="text"
               name="reviewTitle"
@@ -392,7 +405,7 @@ const ProductItem = () => {
               value={newReview.reviewContent}
               onChange={handleReviewChange}
               required
-              className="border rounded p-2 resize-none h-24" 
+              className="border rounded p-2 resize-none h-24"
             />
             <button
               type="submit"
@@ -405,7 +418,7 @@ const ProductItem = () => {
 
         {/* Customer Reviews */}
         <div className="md:p-16 pt-8 pb-8 md:pb-0">
-          {" "}
+          {' '}
           {reviews.map((review, index) => (
             <div
               key={index}

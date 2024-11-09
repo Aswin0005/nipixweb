@@ -1,9 +1,11 @@
 'use client';
 import { useState } from 'react';
 import { signInWithPopup } from 'firebase/auth';
-import { auth, googleProvider } from '../../../../firebaseConfig';
+import { auth, googleProvider, db } from '../../../../firebaseConfig';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { doc, setDoc } from 'firebase/firestore';
 
 const RegisterPage = () => {
   // State for form inputs
@@ -44,33 +46,25 @@ const RegisterPage = () => {
       alert('Passwords do not match');
       return;
     }
-
-    console.log(formData.name, formData.email, formData.password);
     try {
-      const response = await fetch('/api/auth/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          password: formData.password,
-        }),
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        formData.email,
+        formData.password
+      );
+      const userId = userCredential.user.uid;
+      console.log('User created:', userId);
+
+      const userDocRef = doc(db, 'users', userId);
+      await setDoc(userDocRef, {
+        name: formData.name,
+        email: formData.email,
+        role: 'user',
       });
 
-      const data = await response.json();
-
-      if (response.status === 201) {
-        alert('Registration successful');
-        console.log(data);
-        router.push('/');
-      } else {
-        alert(data.message || 'Registration failed');
-      }
+      router.push('/');
     } catch (error) {
-      console.error('Error during registration:', error);
-      alert('An error occurred. Please try again.');
+      alert(error || 'Registration failed');
     }
   };
 

@@ -1,38 +1,38 @@
-"use client";
-import Image from "next/image";
-import { useState } from "react";
+'use client';
+import Image from 'next/image';
+import { useState } from 'react';
 
 export const CoursesHero = () => {
   const [isInputClicked, setIsInputClicked] = useState(false);
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState('');
   const courses = [
     {
       id: 1,
-      courseName: "JavaScript for Beginners",
-      author: "Billa",
-      level: "Beginner",
-      image: "/webinarphoto.png",
+      courseName: 'JavaScript for Beginners',
+      author: 'Billa',
+      level: 'Beginner',
+      image: '/webinarphoto.png',
     },
     {
       id: 2,
-      courseName: "Advanced Python Programming",
-      author: "Dhanush Shankar",
-      level: "Advanced",
-      image: "/webinarphoto.png",
+      courseName: 'Advanced Python Programming',
+      author: 'Dhanush Shankar',
+      level: 'Advanced',
+      image: '/webinarphoto.png',
     },
     {
       id: 3,
-      courseName: "Full-Stack Web Development",
-      author: "Thalapathy Vijay",
-      level: "Intermediate",
-      image: "/webinarphoto.png",
+      courseName: 'Full-Stack Web Development',
+      author: 'Thalapathy Vijay',
+      level: 'Intermediate',
+      image: '/webinarphoto.png',
     },
     {
       id: 4,
-      courseName: "UI/UX Design Fundamentals",
-      author: "Ajith Kumar",
-      level: "Beginner",
-      image: "/webinarphoto.png",
+      courseName: 'UI/UX Design Fundamentals',
+      author: 'Ajith Kumar',
+      level: 'Beginner',
+      image: '/webinarphoto.png',
     },
   ];
   const filteredCourses = courses.filter((course) =>
@@ -41,7 +41,7 @@ export const CoursesHero = () => {
   return (
     <div className="w-screen min-h-screen flex">
       <div className="grow md:bg-[image:linear-gradient(to_right,#3770CD_0%,#3770CD_50%,#f7f7f7_50%,#f7f7f7_100%)]  flex flex-col justify-center items-center  p-4 md:p-8">
-        <h1 className="text-blue-500 md:color-inverse-head text-5xl font-extrabold mt-20 max-md:text-center">
+        <h1 className="color-inverse-head text-5xl font-extrabold mt-20 max-md:text-center">
           All Skills you need in One Place
         </h1>
         <p className="text-black/70 md:color-inverse-subhead font-medium max-md:text-center">
@@ -75,13 +75,13 @@ export const CoursesHero = () => {
                       <div className="flex items-center text-sm font-semibold">
                         <span
                           className={`${
-                            course.level === "Beginner"
-                              ? "text-green-500"
-                              : course.level === "Intermediate"
-                              ? "text-yellow-500"
-                              : course.level === "Advanced"
-                              ? "text-red-500"
-                              : ""
+                            course.level === 'Beginner'
+                              ? 'text-green-500'
+                              : course.level === 'Intermediate'
+                              ? 'text-yellow-500'
+                              : course.level === 'Advanced'
+                              ? 'text-red-500'
+                              : ''
                           }`}
                         >
                           {course.level}
