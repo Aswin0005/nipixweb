@@ -1,7 +1,11 @@
-'use client';
-import React, { useState, useEffect } from 'react';
 
-const BlogCategories = () => {
+'use client';
+
+import React, { useState, useEffect } from 'react';
+import { Search, ChevronRight, Dot } from 'lucide-react';
+
+
+const BlogCategories = ({ onCategoryChange }) => {
   const [activeButton, setActiveButton] = useState('All');
   const [isMobile, setIsMobile] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -11,15 +15,14 @@ const BlogCategories = () => {
     { label: 'News', count: 5 },
     { label: 'Announcements', count: 2 },
     { label: 'Events', count: 8 },
-    { label: 'Operations', count: 4 },
     { label: 'Marketing', count: 3 },
-    { label: 'Strategy', count: 6 },
     { label: 'Workshops', count: 11 },
   ];
 
   const handleClick = (label) => {
     setActiveButton(label);
-    setIsDropdownOpen(false); // Close dropdown after selection
+    setIsDropdownOpen(false);
+    onCategoryChange(label);
   };
 
   useEffect(() => {
@@ -27,14 +30,13 @@ const BlogCategories = () => {
       setIsMobile(window.innerWidth <= 768);
     };
     window.addEventListener('resize', handleResize);
-    handleResize(); // Initial check on load
+    handleResize();
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   return (
-    <div className="max-w-[550px]">
+    <div className="max-w-[450px]">
       {isMobile ? (
-        // Dropdown for mobile view
         <div className="relative mt-3">
           <button
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
@@ -43,7 +45,7 @@ const BlogCategories = () => {
             {activeButton} <span className="text-xs">▼</span>
           </button>
           {isDropdownOpen && (
-            <div className="absolute  left-0  bg-white border border-gray-300 rounded-lg shadow-lg mt-2 z-10">
+            <div className="absolute left-0 bg-white border border-gray-300 rounded-lg shadow-lg mt-2 z-10">
               {buttonData.map((button) => (
                 <button
                   key={button.label}
@@ -62,7 +64,6 @@ const BlogCategories = () => {
           )}
         </div>
       ) : (
-        // Button group for desktop view
         <div className="flex gap-2 flex-wrap">
           {buttonData.map((button) => (
             <div className="text-[15px]" key={button.label}>
@@ -94,3 +95,4 @@ const BlogCategories = () => {
 };
 
 export default BlogCategories;
+
