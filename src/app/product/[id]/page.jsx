@@ -3,29 +3,15 @@ import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import star from '../../../../public/star.png';
-import uno_img1 from '../../../../public/uno_img1.png';
-import uno_img2 from '../../../../public/uno_img2.png';
-import uno_img3 from '../../../../public/uno_img3.png';
-import uno_img4 from '../../../../public/uno_img4.png';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../../../../firebaseConfig';
 import { useParams } from 'next/navigation';
 import axios from 'axios';
 import { CldImage } from 'next-cloudinary';
+import { useRouter } from 'next/navigation';
 
 const ProductItem = () => {
-  const details = [
-    { label: 'Brand', value: 'Ardunio' },
-    { label: 'Width', value: '8cm' },
-    { label: 'Model number', value: 'RC-A-4058' },
-    { label: 'Height', value: '1.5cm' },
-    { label: 'Type', value: 'Micro Controller Board' },
-    { label: 'Weight', value: '70g' },
-    { label: 'Material', value: 'Epoxy' },
-    { label: 'Manufacturer', value: 'Kuongshun Electronic Ltd., Karnataka' },
-    { label: 'Power Source', value: 'DC' },
-  ];
-
+  const router = useRouter();
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleNext = () => {
@@ -224,10 +210,64 @@ const ProductItem = () => {
     return `${formattedDate} ${time}`;
   }
 
+  const handleBuyNow = () => {
+    router.push(
+      `/checkout?productId=${params.id}&quantity=${quantity}&type=product`
+    );
+  };
+  const addToCart = async () => {
+    if (!userId) {
+      alert('Please log in to add items to your cart.');
+      return;
+    }
+
+    try {
+      const response = await axios.post(`/api/user/${userId}/cart/add`, {
+        userId,
+        productId: productDetails.id,
+        name: productDetails.name,
+        quantity,
+        price: productDetails.price,
+        image: productDetails.image,
+      });
+
+      alert('Item added to cart successfully!');
+    } catch (error) {
+      console.error('Error adding to cart:', error);
+      alert('Failed to add item to cart');
+    }
+  };
+
   return (
     <>
       {isLoading ? (
-        <div>Loading...</div>
+        <div className="w-screen h-screen p-4 md:p-8 pt-24 md:pt-32 mx-auto ">
+          <div
+            role="status"
+            class="space-y-8 animate-pulse md:space-y-0 md:space-x-8 rtl:space-x-reverse md:flex md:items-center"
+          >
+            <div class="flex items-center justify-center w-full h-48 bg-gray-300 rounded sm:w-96 dark:bg-gray-700">
+              <svg
+                class="w-10 h-10 text-gray-200 dark:text-gray-600"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 18"
+              >
+                <path d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z" />
+              </svg>
+            </div>
+            <div class="w-full">
+              <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
+              <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[480px] mb-2.5"></div>
+              <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
+              <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[440px] mb-2.5"></div>
+              <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[460px] mb-2.5"></div>
+              <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px]"></div>
+            </div>
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
       ) : (
         <div className="pt-24 md:pt-32 mx-auto w-screen min-h-screen overflow-hidden p-4 md:p-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -320,11 +360,17 @@ const ProductItem = () => {
                     +
                   </button>
                 </div>
-                <button className="bg-[#3897D1] rounded-lg text-md py-3 w-full text-white px-4 ">
+                <button
+                  className="bg-[#3897D1] rounded-lg text-md py-3 w-full text-white px-4 "
+                  onClick={() => addToCart()}
+                >
                   Add to Cart
                 </button>
               </div>
-              <button className="mt-8 bg-[#3897D1] rounded-lg text-md py-3 w-full text-white px-4">
+              <button
+                onClick={() => handleBuyNow()}
+                className="mt-8 bg-[#3897D1] rounded-lg text-md py-3 w-full text-white px-4"
+              >
                 Buy Now
               </button>
             </div>

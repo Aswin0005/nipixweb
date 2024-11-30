@@ -1,11 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { ChevronDown } from 'lucide-react';
-import arduinoKit from '../../../public/arduinoKit.png';
-import roboticKit from '../../../public/roboticKit.jpg';
-import electronicKit from '../../../public/electronicKit.jpg';
-import otherKit from '../../../public/otherKit.jpg';
-import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 
@@ -15,6 +10,7 @@ function ProductPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [sortOrder, setSortOrder] = useState(null);
   const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
 
   const categories = [
@@ -24,8 +20,6 @@ function ProductPage() {
     { id: 'electronic', name: 'Electronic Kits' },
     { id: 'other', name: 'Other Kits' },
   ];
-
- 
 
   const handleSort = (order) => {
     setSortOrder(order);
@@ -64,6 +58,7 @@ function ProductPage() {
         const data = await axios.get('/api/products');
         console.log(data.data);
         setProducts(data.data.products);
+        setIsLoading(false);
       } catch (error) {
         console.error('Error fetching products:', error.message);
       }
@@ -71,6 +66,7 @@ function ProductPage() {
 
     fetchAllProducts();
   }, []);
+
   return (
     <div className="pt-16 md:pt-24 flex w-screen h-screen overflow-hidden">
       {/* Left Sidebar for Desktop and Dropdown for Mobile */}
@@ -99,7 +95,7 @@ function ProductPage() {
       )}
 
       {/* Right Content */}
-      <div className="md:ml-64 p-4 md:p-8 h-full flex flex-col ">
+      <div className="grow md:ml-64 p-4 md:p-8 h-full flex flex-col ">
         {/* Search and Filter Bar */}
         <div className="flex flex-col md:flex-row items-center gap-2 mb-5">
           <div className="flex items-center max-w-md w-full">
@@ -184,31 +180,55 @@ function ProductPage() {
 
         {/* Product Grid with Scrollable Container */}
         <div className="flex-1 overflow-y-scroll no-scrollbar  pb-10 rounded-lg ">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {filteredProducts.map((product) => (
-              <div
-                key={product.id}
-                onClick={() => router.push(`/product/${product.id}`)}
-                className="border border-gray-300 rounded-lg p-4 bg-white"
-              >
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-full h-40 object-contain rounded mb-3"
-                />
-                <h3 className="text-xl font-bold mb-1">{product.name}</h3>
-                <p className="text-sm text-gray-600 mb-1 line-clamp-2">
-                  {product.description}
-                </p>
-                <div className="flex justify-between items-center">
-                  <span className="text-xl font-bold">₹ {product.price}</span>
-                  <button className="text-sm p-2 px-4 bg-blue-500 text-white rounded">
-                    Buy Now
-                  </button>
+          {isLoading ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {Array.from({ length: 10 }).map((_, index) => (
+                <div
+                  key={index}
+                  className="bg-white rounded-2xl p-4 my-4 relative border border-transparent shadow-md"
+                >
+                  <div className="w-full h-40 bg-gray-200 rounded-2xl animate-pulse"></div>
+                  <div className="pt-2">
+                    <div className="w-3/4 h-6 bg-gray-200 rounded animate-pulse mb-2"></div>
+                    <div className="w-1/2 h-4 bg-gray-200 rounded animate-pulse"></div>
+                  </div>
+                  <div className="mt-2 flex justify-between items-center">
+                    <div className="flex items-center">
+                      <div className="w-16 h-4 bg-gray-200 rounded animate-pulse mr-2"></div>
+                      <div className="w-5 h-5 bg-gray-200 rounded-full animate-pulse"></div>
+                    </div>
+                    <div className="w-24 h-4 bg-gray-200 rounded animate-pulse"></div>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+              {filteredProducts.map((product) => (
+                <div
+                  key={product.id}
+                  onClick={() => router.push(`/product/${product.id}`)}
+                  className="border border-gray-300 rounded-lg p-4 bg-white"
+                >
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-40 object-contain rounded mb-3"
+                  />
+                  <h3 className="text-xl font-bold mb-1">{product.name}</h3>
+                  <p className="text-sm text-gray-600 mb-1 line-clamp-2">
+                    {product.description}
+                  </p>
+                  <div className="flex justify-between items-center">
+                    <span className="text-xl font-bold">₹ {product.price}</span>
+                    <button className="text-sm p-2 px-4 bg-blue-500 text-white rounded">
+                      Buy Now
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>
